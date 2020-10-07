@@ -17,31 +17,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="RgG-OE-0Oe">
-                                <rect key="frame" x="50" y="190" width="314" height="183.5"/>
+                                <rect key="frame" x="25" y="190" width="364" height="183.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="av2-x0-4Ks" userLabel="TextFields">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="83"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="83"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Tp-Uc-yRL">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Tp-Uc-yRL">
+                                                <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mgQ-U0-s0n">
-                                                <rect key="frame" x="0.0" y="49" width="314" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mgQ-U0-s0n">
+                                                <rect key="frame" x="0.0" y="49" width="364" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-3q-wgf">
-                                        <rect key="frame" x="136.5" y="108" width="41.5" height="20.5"/>
+                                        <rect key="frame" x="161.5" y="108" width="41.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oag-2q-wdB">
-                                        <rect key="frame" x="118.5" y="153.5" width="77" height="30"/>
+                                        <rect key="frame" x="143.5" y="153.5" width="77" height="30"/>
                                         <state key="normal" title="Отправить"/>
                                     </button>
                                 </subviews>
@@ -54,9 +54,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RgG-OE-0Oe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="1mT-oM-YdU"/>
+                            <constraint firstItem="RgG-OE-0Oe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="1mT-oM-YdU"/>
                             <constraint firstItem="RgG-OE-0Oe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="gOq-zl-rTY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RgG-OE-0Oe" secondAttribute="trailing" constant="50" id="wLA-B2-TXo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RgG-OE-0Oe" secondAttribute="trailing" constant="25" id="wLA-B2-TXo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Аккаунт" id="HaR-0F-Cwz"/>
