@@ -18,9 +18,7 @@ class CounterViewController: UIViewController {
         super.viewDidLoad()
         
         counter
-            .observeNext { num in
-            self.counterLabel.text = "\(num)"
-        }
+            .observeNext { self.counterLabel.text = "\($0)" }
         
     }
 

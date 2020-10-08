@@ -86,6 +86,7 @@
                         <segue destination="ehn-sU-fCG" kind="relationship" relationship="viewControllers" id="wXV-68-sKI"/>
                         <segue destination="lR6-u7-3iH" kind="relationship" relationship="viewControllers" id="HiF-gb-2J1"/>
                         <segue destination="QkW-SV-hAt" kind="relationship" relationship="viewControllers" id="3Mn-Uz-wqb"/>
+                        <segue destination="0wQ-Lg-tOt" kind="relationship" relationship="viewControllers" id="Fwz-2F-9Ph"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ied-jW-4ws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -325,12 +326,91 @@
             </objects>
             <point key="canvasLocation" x="911.59420289855075" y="795.53571428571422"/>
         </scene>
+        <!--Кнопки-->
+        <scene sceneID="coH-YC-dhq">
+            <objects>
+                <viewController id="r78-fw-XcU" customClass="RocketViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="60M-Fh-dk4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="rxb-xn-7cN">
+                                <rect key="frame" x="94.5" y="398" width="225" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G27-Cp-WeP">
+                                        <rect key="frame" x="0.0" y="0.5" width="100" height="99"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="8Jj-WV-Vfy"/>
+                                            <constraint firstAttribute="width" secondItem="G27-Cp-WeP" secondAttribute="height" multiplier="1:1" id="QRN-uH-8qQ"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.10000000000000001" green="1" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="circle.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBe-Gu-HcO">
+                                        <rect key="frame" x="125" y="0.5" width="100" height="99"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SBe-Gu-HcO" secondAttribute="height" multiplier="1:1" id="3ee-FL-nw1"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="circle.fill" catalog="system"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-g0-cZl">
+                                <rect key="frame" x="50" y="327.5" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kPe-gw-Ijg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rxb-xn-7cN" firstAttribute="centerY" secondItem="60M-Fh-dk4" secondAttribute="centerY" id="5yx-th-Qnu"/>
+                            <constraint firstItem="kPe-gw-Ijg" firstAttribute="trailing" secondItem="NeX-g0-cZl" secondAttribute="trailing" constant="50" id="Jds-4d-ohY"/>
+                            <constraint firstItem="rxb-xn-7cN" firstAttribute="centerX" secondItem="60M-Fh-dk4" secondAttribute="centerX" id="khi-0l-Lxg"/>
+                            <constraint firstItem="rxb-xn-7cN" firstAttribute="top" secondItem="NeX-g0-cZl" secondAttribute="bottom" constant="50" id="nzf-cQ-F8o"/>
+                            <constraint firstItem="NeX-g0-cZl" firstAttribute="leading" secondItem="kPe-gw-Ijg" secondAttribute="leading" constant="50" id="v01-xG-dPy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Кнопки" id="ia7-R0-VVm"/>
+                    <connections>
+                        <outlet property="greenButton" destination="G27-Cp-WeP" id="msI-pw-Qhl"/>
+                        <outlet property="outputLabel" destination="NeX-g0-cZl" id="7Oj-ww-2nd"/>
+                        <outlet property="redButton" destination="SBe-Gu-HcO" id="lEx-fg-mTy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBI-NI-ZDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="1473"/>
+        </scene>
+        <!--Кнопки-->
+        <scene sceneID="G6G-tp-dpd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0wQ-Lg-tOt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Кнопки" image="e.circle" catalog="system" id="RyH-5w-T7R"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="F1V-h6-GfE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r78-fw-XcU" kind="relationship" relationship="rootViewController" id="5kl-hL-smu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8v6-O6-TFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="1472.5446428571429"/>
+        </scene>
     </scenes>
     <resources>
         <image name="a.circle" catalog="system" width="128" height="121"/>
         <image name="b.circle" catalog="system" width="128" height="121"/>
         <image name="c.circle" catalog="system" width="128" height="121"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="d.circle" catalog="system" width="128" height="121"/>
+        <image name="e.circle" catalog="system" width="128" height="121"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
