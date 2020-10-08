@@ -52,6 +52,7 @@ class NamesViewController: UIViewController {
             return cell
         }
     }
+    
     @IBAction func push(_ sender: Any) {
         names.insert(nameCollection.randomElement()!, at: 0)
     }

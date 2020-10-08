@@ -85,6 +85,7 @@
                         <segue destination="EfR-hW-df1" kind="relationship" relationship="viewControllers" id="ASt-P9-x0w"/>
                         <segue destination="ehn-sU-fCG" kind="relationship" relationship="viewControllers" id="wXV-68-sKI"/>
                         <segue destination="lR6-u7-3iH" kind="relationship" relationship="viewControllers" id="HiF-gb-2J1"/>
+                        <segue destination="QkW-SV-hAt" kind="relationship" relationship="viewControllers" id="3Mn-Uz-wqb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ied-jW-4ws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -259,11 +260,77 @@
             </objects>
             <point key="canvasLocation" x="911.59420289855075" y="71.651785714285708"/>
         </scene>
+        <!--Счетчик-->
+        <scene sceneID="3pl-zk-QNZ">
+            <objects>
+                <viewController id="YQO-LQ-Qko" customClass="CounterViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XtZ-w8-3fX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5i-QJ-hdH">
+                                <rect key="frame" x="100" y="240" width="214" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-uL-Sof">
+                                <rect key="frame" x="182" y="315" width="50" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="0SU-ka-mi3"/>
+                                    <constraint firstAttribute="width" secondItem="VWI-uL-Sof" secondAttribute="height" multiplier="1:1" id="vjm-lE-i3K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" backgroundImage="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="add:" destination="YQO-LQ-Qko" eventType="touchUpInside" id="iFn-ES-7JR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eXA-yg-Ynp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VWI-uL-Sof" firstAttribute="centerX" secondItem="XtZ-w8-3fX" secondAttribute="centerX" id="0Qv-RR-fGF"/>
+                            <constraint firstItem="VWI-uL-Sof" firstAttribute="top" secondItem="w5i-QJ-hdH" secondAttribute="bottom" constant="25" id="5Qh-4l-UXE"/>
+                            <constraint firstItem="w5i-QJ-hdH" firstAttribute="top" secondItem="eXA-yg-Ynp" secondAttribute="top" constant="100" id="7Rg-Ok-ADJ"/>
+                            <constraint firstItem="w5i-QJ-hdH" firstAttribute="leading" secondItem="eXA-yg-Ynp" secondAttribute="leading" constant="100" id="Aea-iC-ux4"/>
+                            <constraint firstItem="eXA-yg-Ynp" firstAttribute="trailing" secondItem="w5i-QJ-hdH" secondAttribute="trailing" constant="100" id="VoO-31-a37"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Счетчик" id="M3g-ek-ZL2"/>
+                    <connections>
+                        <outlet property="counterLabel" destination="w5i-QJ-hdH" id="kK9-ql-vsn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yvg-Ji-sQc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1637.68115942029" y="795.53571428571422"/>
+        </scene>
+        <!--Счетчик-->
+        <scene sceneID="gzM-wZ-ESU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QkW-SV-hAt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Счетчик" image="d.circle" catalog="system" id="Rpb-QL-xjv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="yYe-3G-TEG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YQO-LQ-Qko" kind="relationship" relationship="rootViewController" id="b2O-56-6Tj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c3u-0l-qGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911.59420289855075" y="795.53571428571422"/>
+        </scene>
     </scenes>
     <resources>
         <image name="a.circle" catalog="system" width="128" height="121"/>
         <image name="b.circle" catalog="system" width="128" height="121"/>
         <image name="c.circle" catalog="system" width="128" height="121"/>
+        <image name="d.circle" catalog="system" width="128" height="121"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
