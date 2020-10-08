@@ -8,6 +8,7 @@
 import UIKit
 import Bond
 
+// MARK: Updatable domain enders
 enum DomainNames: String, CaseIterable, CustomStringConvertible {
     case ru
     case com
@@ -30,10 +31,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
     
-    
     func checkPasswordFormat(for pass: String) -> Bool {
         return !(pass.count != 0 && pass.count < 6)
     }
+    // MARK: Login check
+    // If the email follows standart layout of <name>@<domain>.<DomainNames> then the check is true
     func checkLoginFormat(for login: String) -> Bool {
         var result = false
         if login.count != 0{
@@ -77,6 +79,8 @@ class ViewController: UIViewController {
         return result || login.isEmpty
     }
     
+    //MARK: Login handler
+    // Updates the sendButton to be active when everything is ok
     func loginHandler() {
         
         var loginErrorString: String { "Неверный формат почты.\n '<имя>@<домен>.\(DomainNames.allCases)'" }
