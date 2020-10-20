@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class Loader {
-    
-    static func download(){
+    static let randomImageURL = URL(string: "https://picsum.photos/1280/720")!
+    static func download() -> UIImage{
+        let data = (try? Data(contentsOf: randomImageURL))!
+        return UIImage(data: data)!
         
     }
     
