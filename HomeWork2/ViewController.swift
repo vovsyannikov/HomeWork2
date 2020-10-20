@@ -87,13 +87,13 @@ class ViewController: UIViewController {
         
         loginTextField.reactive.text
             .ignoreNils()
-            .map { self.checkLoginFormat(for: $0) ? "" : loginErrorString }
+            .map { [unowned self] in checkLoginFormat(for: $0) ? "" : loginErrorString }
             .bind(to: messageLabel.reactive.text)
         
         loginTextField.reactive.text
             .ignoreNils()
             .combineLatest(with: passwordTextField.reactive.text.ignoreNils())
-            .map{ [self] in
+            .map{ [unowned self] in
                     checkLoginFormat(for: $0)
                     && checkPasswordFormat(for: $1)
                     && $0.count > 0
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
     func passwordHandler() {
         passwordTextField.reactive.text
             .ignoreNils()
-            .map { self.checkPasswordFormat(for: $0) ? "" : "Слишком короткий пароль" }
+            .map { [unowned self] in checkPasswordFormat(for: $0) ? "" : "Слишком короткий пароль" }
             .bind(to: messageLabel.reactive.text)
     }
     
