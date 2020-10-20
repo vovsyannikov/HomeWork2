@@ -17,17 +17,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-9s-loU">
-                                <rect key="frame" x="171" y="408" width="72" height="30"/>
+                                <rect key="frame" x="171" y="490" width="72" height="30"/>
                                 <state key="normal" title="Загрузить"/>
                                 <connections>
                                     <action selector="download:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3BQ-Xh-Toe"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xmS-Am-BQZ">
-                                <rect key="frame" x="93" y="215" width="228" height="128"/>
+                                <rect key="frame" x="29" y="215" width="356" height="200"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xmS-Am-BQZ" secondAttribute="height" multiplier="16:9" id="VXu-mp-TB7"/>
-                                    <constraint firstAttribute="height" constant="128" id="iUx-ox-IaR"/>
+                                    <constraint firstAttribute="height" constant="200" id="iUx-ox-IaR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -37,7 +38,7 @@
                             <constraint firstItem="Sar-9s-loU" firstAttribute="centerX" secondItem="xmS-Am-BQZ" secondAttribute="centerX" id="5zV-4R-ybn"/>
                             <constraint firstItem="xmS-Am-BQZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="MZf-yj-E52"/>
                             <constraint firstItem="xmS-Am-BQZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RVf-nD-xIe"/>
-                            <constraint firstItem="Sar-9s-loU" firstAttribute="top" secondItem="xmS-Am-BQZ" secondAttribute="bottom" constant="65" id="pC6-TJ-YOC"/>
+                            <constraint firstItem="Sar-9s-loU" firstAttribute="top" secondItem="xmS-Am-BQZ" secondAttribute="bottom" constant="75" id="pC6-TJ-YOC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Загрузка картинки" id="Civ-a0-rLe"/>
@@ -55,6 +56,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uYu-rF-Qtv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5dh-Jo-XaE">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -88,6 +90,9 @@
     </scenes>
     <resources>
         <image name="a" catalog="system" width="128" height="128"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
