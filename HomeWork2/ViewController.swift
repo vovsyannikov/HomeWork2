@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func download(_ sender: Any) {
-        
+        Loader.download()
     }
     
 }
