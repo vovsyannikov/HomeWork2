@@ -16,6 +16,9 @@ class SimpleNumbersViewController: UIViewController {
         super.viewDidLoad()
         
         resultLabel.text = ""
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
     
     func findSimpleNums(from input: String) -> String {
@@ -55,6 +58,7 @@ class SimpleNumbersViewController: UIViewController {
     @IBAction func findSimples(_ sender: Any) {
         var timer = MyTimer()
         let currentNumber = self.numberTextField.text!
+        
         DispatchQueue.global(qos: .utility).async { [unowned self] in
             let resultingString = self.findSimpleNums(from: currentNumber)
             timer.stop()
@@ -63,7 +67,6 @@ class SimpleNumbersViewController: UIViewController {
                 [unowned self] in
                 
                 self.resultLabel.text = resultingString
-                print(resultingString)
             }
         }
     }
