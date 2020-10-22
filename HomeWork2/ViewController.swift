@@ -7,22 +7,27 @@
 
 import UIKit
 
+let randomImageURL = URL(string: "https://picsum.photos/1280/720")!
+
 class ViewController: UIViewController {
 
-    let randomImageURL = URL(string: "https://picsum.photos/1280/720")!
+    @IBOutlet weak var progressLabel: UILabel!
+    
     
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        progressLabel.text = "Ожидание ввода"
     }
 
     @IBAction func download(_ sender: Any) {
+        self.progressLabel.text = "Загружается картинка..."
         DispatchQueue.global(qos: .utility).async { [unowned self] in
-            let data = (try? Data(contentsOf: self.randomImageURL))!
+            let data = (try? Data(contentsOf: randomImageURL))!
             let image = UIImage(data: data)
             DispatchQueue.main.async {
                 [unowned self] in
+                self.progressLabel.text = "Готово!"
                 self.imageView.image = image
             }
         }

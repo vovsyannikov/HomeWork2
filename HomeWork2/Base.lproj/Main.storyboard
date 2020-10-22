@@ -31,24 +31,34 @@
                                     <constraint firstAttribute="height" constant="200" id="iUx-ox-IaR"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AW2-6u-Wis">
+                                <rect key="frame" x="186" y="165" width="42" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Sar-9s-loU" firstAttribute="centerX" secondItem="xmS-Am-BQZ" secondAttribute="centerX" id="5zV-4R-ybn"/>
+                            <constraint firstItem="xmS-Am-BQZ" firstAttribute="top" secondItem="AW2-6u-Wis" secondAttribute="bottom" constant="25" id="DHX-8c-0hx"/>
                             <constraint firstItem="xmS-Am-BQZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="MZf-yj-E52"/>
+                            <constraint firstItem="AW2-6u-Wis" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P0p-Az-vfc"/>
                             <constraint firstItem="xmS-Am-BQZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RVf-nD-xIe"/>
+                            <constraint firstItem="AW2-6u-Wis" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="Yd0-PO-DAe"/>
                             <constraint firstItem="Sar-9s-loU" firstAttribute="top" secondItem="xmS-Am-BQZ" secondAttribute="bottom" constant="75" id="pC6-TJ-YOC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Загрузка картинки" id="Civ-a0-rLe"/>
                     <connections>
                         <outlet property="imageView" destination="xmS-Am-BQZ" id="xLk-tj-qQS"/>
+                        <outlet property="progressLabel" destination="AW2-6u-Wis" id="VTR-he-w53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794.2028985507247" y="71.651785714285708"/>
+            <point key="canvasLocation" x="1654" y="-611"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KwU-0v-SaD">
@@ -62,17 +72,69 @@
                     </tabBar>
                     <connections>
                         <segue destination="n22-t4-Fls" kind="relationship" relationship="viewControllers" id="vEK-HF-b21"/>
+                        <segue destination="L5f-0Z-uOC" kind="relationship" relationship="viewControllers" id="JtN-TJ-g4d"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPL-dD-5Wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-26.086956521739133" y="71.651785714285708"/>
         </scene>
+        <!--Загрузка и размытие-->
+        <scene sceneID="Ptw-u9-H4G">
+            <objects>
+                <viewController id="cB3-mR-qJT" customClass="D_BViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ui3-C4-7Yp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nxq-3Z-qdz">
+                                <rect key="frame" x="29" y="215" width="356" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="VXD-eu-UdZ"/>
+                                    <constraint firstAttribute="width" secondItem="Nxq-3Z-qdz" secondAttribute="height" multiplier="16:9" id="cms-PD-MLT"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSL-zo-HCr">
+                                <rect key="frame" x="131.5" y="490" width="151" height="30"/>
+                                <state key="normal" title="Загрузить и размыть"/>
+                                <connections>
+                                    <action selector="downloadAndBlur:" destination="cB3-mR-qJT" eventType="touchUpInside" id="XGX-1l-Tqa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOJ-q9-slt">
+                                <rect key="frame" x="186" y="165" width="42" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XAg-e1-ZRS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nxq-3Z-qdz" firstAttribute="top" secondItem="JOJ-q9-slt" secondAttribute="bottom" constant="25" id="80y-Oi-raF"/>
+                            <constraint firstItem="ZSL-zo-HCr" firstAttribute="top" secondItem="Nxq-3Z-qdz" secondAttribute="bottom" constant="75" id="D6G-1i-Few"/>
+                            <constraint firstItem="JOJ-q9-slt" firstAttribute="centerX" secondItem="Ui3-C4-7Yp" secondAttribute="centerX" id="EQM-mP-AZF"/>
+                            <constraint firstItem="ZSL-zo-HCr" firstAttribute="centerX" secondItem="Nxq-3Z-qdz" secondAttribute="centerX" id="K0S-Vt-OKw"/>
+                            <constraint firstItem="Nxq-3Z-qdz" firstAttribute="centerX" secondItem="Ui3-C4-7Yp" secondAttribute="centerX" id="UEM-9D-Six"/>
+                            <constraint firstItem="JOJ-q9-slt" firstAttribute="top" secondItem="XAg-e1-ZRS" secondAttribute="top" constant="25" id="iaH-PS-xzJ"/>
+                            <constraint firstItem="Nxq-3Z-qdz" firstAttribute="top" secondItem="XAg-e1-ZRS" secondAttribute="top" constant="75" id="wkV-GK-882"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Загрузка и размытие" id="Msk-M0-ihM"/>
+                    <connections>
+                        <outlet property="imageView" destination="Nxq-3Z-qdz" id="u3z-fP-6pF"/>
+                        <outlet property="progressLabel" destination="JOJ-q9-slt" id="elu-AY-wM4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIb-rs-D7C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1655" y="72"/>
+        </scene>
         <!--Загрузка-->
         <scene sceneID="Ftb-P8-3NP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n22-t4-Fls" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Загрузка" image="a" catalog="system" id="jpF-pH-yCA"/>
+                    <tabBarItem key="tabBarItem" title="Загрузка" image="a.square.fill" catalog="system" id="jpF-pH-yCA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="634-dW-Kal">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -85,11 +147,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwD-gA-4Bo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884.05797101449286" y="71.651785714285708"/>
+            <point key="canvasLocation" x="745" y="-611"/>
+        </scene>
+        <!--Размытие-->
+        <scene sceneID="IbT-I6-jAb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L5f-0Z-uOC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Размытие" image="b.square.fill" catalog="system" id="uPF-7d-I0O"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="49Y-ik-E6n">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cB3-mR-qJT" kind="relationship" relationship="rootViewController" id="TdP-pv-IE8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pn3-Jd-ZXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="72"/>
         </scene>
     </scenes>
     <resources>
-        <image name="a" catalog="system" width="128" height="128"/>
+        <image name="a.square.fill" catalog="system" width="128" height="114"/>
+        <image name="b.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
