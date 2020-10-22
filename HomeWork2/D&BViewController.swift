@@ -17,11 +17,33 @@ class D_BViewController: UIViewController {
         progressLabel.text = "Ожидание ввода"
     }
     
-    func blurred(_ image: UIImage) -> UIImage{
+    
+    
+    @IBAction func downloadAndBlur(_ sender: Any) {
+        progressLabel.text = "Загружается картинка..."
+        DispatchQueue.global(qos: .utility).async { [unowned self] in
+            let data = (try? Data(contentsOf: randomImageURL))!
+            let image = UIImage(data: data)!
+            DispatchQueue.main.async { [unowned self] in
+                self.imageView.image = image
+                self.progressLabel.text = "Размытие..."
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {                    self.imageView.image = image.blurred
+                    self.progressLabel.text = "Готово!"
+                }
+            }
+        }
+    }
+    
+}
+
+extension UIImage {
+    var blurred: UIImage { blur() }
+    
+    func blur() -> UIImage{
         let context = CIContext(options: nil)
         
         let blurFilter = CIFilter(name: "CIGaussianBlur")
-        let startingImage = CIImage(image: image)
+        let startingImage = CIImage(image: self)
         blurFilter?.setValue(startingImage, forKey: kCIInputImageKey)
         blurFilter?.setValue(8, forKey: kCIInputRadiusKey)
         
@@ -35,20 +57,4 @@ class D_BViewController: UIViewController {
         
         return resultingImage
     }
-    
-    @IBAction func downloadAndBlur(_ sender: Any) {
-        progressLabel.text = "Загружается картинка..."
-        DispatchQueue.global(qos: .utility).async { [unowned self] in
-            let data = (try? Data(contentsOf: randomImageURL))!
-            let image = UIImage(data: data)!
-            DispatchQueue.main.async { [unowned self] in
-                self.imageView.image = image
-                self.progressLabel.text = "Размытие..."
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {                    self.imageView.image = blurred(image)
-                    self.progressLabel.text = "Готово!"
-                }
-            }
-        }
-    }
-    
 }
