@@ -14,6 +14,7 @@
 		3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B665252E4361004F8B15 /* Assets.xcassets */; };
 		3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */; };
 		3C5597AF2541BFF300930DE9 /* D&BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5597AE2541BFF300930DE9 /* D&BViewController.swift */; };
+		3C5597B22541CE2300930DE9 /* SimpleNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5597B12541CE2300930DE9 /* SimpleNumbersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3C11B668252E4361004F8B15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C11B66A252E4361004F8B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C5597AE2541BFF300930DE9 /* D&BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "D&BViewController.swift"; sourceTree = "<group>"; };
+		3C5597B12541CE2300930DE9 /* SimpleNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNumbersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		3C11B65B252E435C004F8B15 /* HomeWork2 */ = {
 			isa = PBXGroup;
 			children = (
+				3C5597B12541CE2300930DE9 /* SimpleNumbersViewController.swift */,
 				3C11B65C252E435C004F8B15 /* AppDelegate.swift */,
 				3C11B65E252E435C004F8B15 /* SceneDelegate.swift */,
 				3C11B660252E435C004F8B15 /* ViewController.swift */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5597B22541CE2300930DE9 /* SimpleNumbersViewController.swift in Sources */,
 				3C11B661252E435C004F8B15 /* ViewController.swift in Sources */,
 				3C5597AF2541BFF300930DE9 /* D&BViewController.swift in Sources */,
 				3C11B65D252E435C004F8B15 /* AppDelegate.swift in Sources */,

@@ -25,7 +25,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xmS-Am-BQZ">
                                 <rect key="frame" x="29" y="215" width="356" height="200"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xmS-Am-BQZ" secondAttribute="height" multiplier="16:9" id="VXu-mp-TB7"/>
                                     <constraint firstAttribute="height" constant="200" id="iUx-ox-IaR"/>
@@ -73,6 +72,7 @@
                     <connections>
                         <segue destination="n22-t4-Fls" kind="relationship" relationship="viewControllers" id="vEK-HF-b21"/>
                         <segue destination="L5f-0Z-uOC" kind="relationship" relationship="viewControllers" id="JtN-TJ-g4d"/>
+                        <segue destination="rEB-ZA-VJj" kind="relationship" relationship="viewControllers" id="B3Z-Vx-S6O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPL-dD-5Wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,13 +168,105 @@
             </objects>
             <point key="canvasLocation" x="745" y="72"/>
         </scene>
+        <!--Простые числа-->
+        <scene sceneID="On9-2O-LLo">
+            <objects>
+                <viewController id="0y9-eC-ptw" customClass="SimpleNumbersViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zLj-OK-WDl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Emd-rp-ip6">
+                                <rect key="frame" x="99.5" y="190" width="215.5" height="158.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XAe-r6-qaj">
+                                        <rect key="frame" x="0.0" y="0.0" width="215.5" height="88"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="12w-Og-a1V">
+                                                <rect key="frame" x="0.0" y="0.0" width="215.5" height="34"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Исходное число" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXG-9e-azL">
+                                                        <rect key="frame" x="0.0" y="7" width="130.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Число" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-cx-enq">
+                                                        <rect key="frame" x="145.5" y="0.0" width="70" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kw-cm-HcH">
+                                                <rect key="frame" x="70.5" y="58" width="74" height="30"/>
+                                                <state key="normal" title="Расчитать"/>
+                                                <connections>
+                                                    <action selector="findSimples:" destination="0y9-eC-ptw" eventType="touchUpInside" id="UJB-Ny-3Af"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9i-qH-z75">
+                                        <rect key="frame" x="0.0" y="138" width="88" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODf-0W-1kL">
+                                <rect key="frame" x="5" y="372" width="404" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rWa-68-TLl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ODf-0W-1kL" firstAttribute="centerX" secondItem="Emd-rp-ip6" secondAttribute="centerX" id="As9-Il-ikr"/>
+                            <constraint firstItem="ODf-0W-1kL" firstAttribute="leading" secondItem="rWa-68-TLl" secondAttribute="leading" constant="5" id="G02-tk-Rb3"/>
+                            <constraint firstItem="ODf-0W-1kL" firstAttribute="top" secondItem="Emd-rp-ip6" secondAttribute="bottom" constant="23.5" id="J22-HJ-gxs"/>
+                            <constraint firstItem="rWa-68-TLl" firstAttribute="trailing" secondItem="ODf-0W-1kL" secondAttribute="trailing" constant="5" id="S2m-Dp-E5b"/>
+                            <constraint firstItem="Emd-rp-ip6" firstAttribute="centerX" secondItem="zLj-OK-WDl" secondAttribute="centerX" id="qbb-gp-CrK"/>
+                            <constraint firstItem="Emd-rp-ip6" firstAttribute="top" secondItem="rWa-68-TLl" secondAttribute="top" constant="50" id="tI1-Il-U56"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Простые числа" id="wjK-0B-u5U"/>
+                    <connections>
+                        <outlet property="numberTextField" destination="mzX-cx-enq" id="PLx-45-b36"/>
+                        <outlet property="resultLabel" destination="ODf-0W-1kL" id="xey-I5-bek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Lv-Yv-rvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1655.072463768116" y="801.5625"/>
+        </scene>
+        <!--Простые числа-->
+        <scene sceneID="jm6-6F-eot">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rEB-ZA-VJj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Простые числа" image="c.square.fill" catalog="system" id="1uN-wi-OFz"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="PWR-jD-LZV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0y9-eC-ptw" kind="relationship" relationship="rootViewController" id="YVb-SC-y4V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3pb-qK-Ogj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744.92753623188412" y="801.5625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="a.square.fill" catalog="system" width="128" height="114"/>
         <image name="b.square.fill" catalog="system" width="128" height="114"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="c.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

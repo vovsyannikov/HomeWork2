@@ -17,8 +17,6 @@ class D_BViewController: UIViewController {
         progressLabel.text = "Ожидание ввода"
     }
     
-    
-    
     @IBAction func downloadAndBlur(_ sender: Any) {
         progressLabel.text = "Загружается картинка..."
         DispatchQueue.global(qos: .utility).async { [unowned self] in
