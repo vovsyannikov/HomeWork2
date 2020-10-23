@@ -73,6 +73,7 @@
                         <segue destination="n22-t4-Fls" kind="relationship" relationship="viewControllers" id="vEK-HF-b21"/>
                         <segue destination="L5f-0Z-uOC" kind="relationship" relationship="viewControllers" id="JtN-TJ-g4d"/>
                         <segue destination="rEB-ZA-VJj" kind="relationship" relationship="viewControllers" id="B3Z-Vx-S6O"/>
+                        <segue destination="7yi-CG-fpi" kind="relationship" relationship="viewControllers" id="qIa-x7-QiC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPL-dD-5Wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,6 +244,180 @@
             </objects>
             <point key="canvasLocation" x="1655.072463768116" y="801.5625"/>
         </scene>
+        <!--Функции-->
+        <scene sceneID="IHq-TL-Rb3">
+            <objects>
+                <viewController id="TaE-Aj-YME" customClass="FunctionProcessingViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lzt-dh-uZy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vJP-s9-e5o">
+                                <rect key="frame" x="66.5" y="363" width="281" height="170"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6So-ZC-50W">
+                                        <rect key="frame" x="1.5" y="0.0" width="278" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Задача 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEn-ws-wFe">
+                                                <rect key="frame" x="0.0" y="1" width="68.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OD-PL-Irx">
+                                                <rect key="frame" x="92.5" y="0.0" width="17.5" height="22"/>
+                                                <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="startTask1:" destination="TaE-Aj-YME" eventType="touchUpInside" id="xYY-yY-xQG"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W4o-mO-3VO">
+                                                <rect key="frame" x="134" y="9" width="100" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="zsG-11-Sd3"/>
+                                                </constraints>
+                                            </progressView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-wQ-TQW">
+                                                <rect key="frame" x="258" y="1" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qxc-I7-GDl">
+                                        <rect key="frame" x="0.5" y="37" width="280.5" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Задача 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-aq-qI7">
+                                                <rect key="frame" x="0.0" y="1" width="71" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp5-qX-BMg">
+                                                <rect key="frame" x="95" y="0.0" width="17.5" height="22"/>
+                                                <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="startTask2:" destination="TaE-Aj-YME" eventType="touchUpInside" id="i8d-tV-whX"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RkU-wf-9GP">
+                                                <rect key="frame" x="136.5" y="9" width="100" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="mVe-4P-a0Z"/>
+                                                </constraints>
+                                            </progressView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-bs-54x">
+                                                <rect key="frame" x="260.5" y="1" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-Kh-alw">
+                                        <rect key="frame" x="0.0" y="74" width="281" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Задача 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwR-bh-XB5">
+                                                <rect key="frame" x="0.0" y="1" width="71.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GqP-hV-YqF">
+                                                <rect key="frame" x="95.5" y="0.0" width="17.5" height="22"/>
+                                                <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="startTask3:" destination="TaE-Aj-YME" eventType="touchUpInside" id="9ns-9T-9N6"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cYs-dp-Eja">
+                                                <rect key="frame" x="137" y="9" width="100" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="qce-TQ-nLx"/>
+                                                </constraints>
+                                            </progressView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4cK-bt-yv6">
+                                                <rect key="frame" x="261" y="1" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-NG-b8l">
+                                        <rect key="frame" x="0.0" y="111" width="281" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Задача 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFu-vB-pgi">
+                                                <rect key="frame" x="0.0" y="1" width="71.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Otp-q5-Z9G">
+                                                <rect key="frame" x="95.5" y="0.0" width="17.5" height="22"/>
+                                                <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="startTask4:" destination="TaE-Aj-YME" eventType="touchUpInside" id="3Op-0p-oHO"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G3B-t5-5pj">
+                                                <rect key="frame" x="137" y="9" width="100" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="bih-YS-A8K"/>
+                                                </constraints>
+                                            </progressView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-YO-jdt">
+                                                <rect key="frame" x="261" y="1" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-1M-q5z">
+                                        <rect key="frame" x="0.5" y="148" width="280.5" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Задача 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDK-Tx-Phc">
+                                                <rect key="frame" x="0.0" y="1" width="71" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhA-tD-L8u">
+                                                <rect key="frame" x="95" y="0.0" width="17.5" height="22"/>
+                                                <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="startTask5:" destination="TaE-Aj-YME" eventType="touchUpInside" id="Eff-EW-Kjt"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z87-q8-lcM">
+                                                <rect key="frame" x="136.5" y="9" width="100" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="nNe-wQ-X7d"/>
+                                                </constraints>
+                                            </progressView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GhR-LK-iQv">
+                                                <rect key="frame" x="260.5" y="1" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bNp-nD-PDw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vJP-s9-e5o" firstAttribute="centerX" secondItem="Lzt-dh-uZy" secondAttribute="centerX" id="5ZE-WK-Pzi"/>
+                            <constraint firstItem="vJP-s9-e5o" firstAttribute="centerY" secondItem="Lzt-dh-uZy" secondAttribute="centerY" id="Moa-rO-rIv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Функции" id="E7c-h2-98i"/>
+                    <connections>
+                        <outlet property="task1ActivityIndicator" destination="1fH-wQ-TQW" id="FMY-XP-CB8"/>
+                        <outlet property="task1ProgressView" destination="W4o-mO-3VO" id="00N-eR-VKe"/>
+                        <outlet property="task2ActivityIndicator" destination="aFN-bs-54x" id="4l8-cF-3sI"/>
+                        <outlet property="task2ProgressView" destination="RkU-wf-9GP" id="QkT-SI-wl3"/>
+                        <outlet property="task3ActivityIndicator" destination="4cK-bt-yv6" id="D4X-5F-2l9"/>
+                        <outlet property="task3ProgressView" destination="cYs-dp-Eja" id="Oew-og-5qv"/>
+                        <outlet property="task4ActivityIndicator" destination="YwX-YO-jdt" id="15E-f7-XOT"/>
+                        <outlet property="task4ProgressView" destination="G3B-t5-5pj" id="qab-Rx-W3d"/>
+                        <outlet property="task5ActivityIndicator" destination="GhR-LK-iQv" id="gxc-o9-T0B"/>
+                        <outlet property="task5ProgressView" destination="z87-q8-lcM" id="skG-rT-0pM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvl-sf-ea0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1653.6231884057972" y="1553.5714285714284"/>
+        </scene>
         <!--Простые числа-->
         <scene sceneID="jm6-6F-eot">
             <objects>
@@ -262,11 +437,32 @@
             </objects>
             <point key="canvasLocation" x="744.92753623188412" y="801.5625"/>
         </scene>
+        <!--Функции-->
+        <scene sceneID="pVZ-cV-F1z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7yi-CG-fpi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Функции" image="d.square.fill" catalog="system" id="CfB-cp-vh5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="TOv-KB-k8U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TaE-Aj-YME" kind="relationship" relationship="rootViewController" id="1tF-Q7-RgN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eP7-al-L0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.086956521739133" y="1553.5714285714284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="a.square.fill" catalog="system" width="128" height="114"/>
+        <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
         <image name="b.square.fill" catalog="system" width="128" height="114"/>
         <image name="c.square.fill" catalog="system" width="128" height="114"/>
+        <image name="d.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -62,8 +62,8 @@ class SimpleNumbersViewController: UIViewController {
         DispatchQueue.global(qos: .utility).async { [unowned self] in
             let resultingString = self.findSimpleNums(from: currentNumber)
             timer.stop()
-            print("Time spent \(timer.timeSpent)")
-            print(resultingString)
+            print("Time spent \(timer.timeSpent)", terminator: "\n\n")
+            print(resultingString, terminator: "\n\n")
             DispatchQueue.main.async {
                 [unowned self] in
                 
