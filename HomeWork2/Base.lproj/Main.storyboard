@@ -277,7 +277,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="zsG-11-Sd3"/>
                                                 </constraints>
                                             </progressView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-wQ-TQW">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-wQ-TQW">
                                                 <rect key="frame" x="258" y="1" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -304,7 +304,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="mVe-4P-a0Z"/>
                                                 </constraints>
                                             </progressView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-bs-54x">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-bs-54x">
                                                 <rect key="frame" x="260.5" y="1" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -331,7 +331,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="qce-TQ-nLx"/>
                                                 </constraints>
                                             </progressView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4cK-bt-yv6">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4cK-bt-yv6">
                                                 <rect key="frame" x="261" y="1" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -358,7 +358,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="bih-YS-A8K"/>
                                                 </constraints>
                                             </progressView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-YO-jdt">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-YO-jdt">
                                                 <rect key="frame" x="261" y="1" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
@@ -385,7 +385,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="nNe-wQ-X7d"/>
                                                 </constraints>
                                             </progressView>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GhR-LK-iQv">
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GhR-LK-iQv">
                                                 <rect key="frame" x="260.5" y="1" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>

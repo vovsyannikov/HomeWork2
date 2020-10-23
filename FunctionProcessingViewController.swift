@@ -27,8 +27,6 @@ class FunctionProcessingViewController: UIViewController {
     @IBOutlet weak var task5ProgressView: UIProgressView!
     @IBOutlet weak var task5ActivityIndicator: UIActivityIndicatorView!
     
-    
-    
     func firstTask(){
         startProgress(for: 1)
         print("Тупые расчеты")
@@ -131,8 +129,6 @@ class FunctionProcessingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stopAnimating()
-        
         activityIndicators = [
             task1ActivityIndicator,
             task2ActivityIndicator,
@@ -153,7 +149,7 @@ class FunctionProcessingViewController: UIViewController {
         processor.opQueue.maxConcurrentOperationCount = 1
     }
     
-    func startProgress(for index: Int){
+    func startProgress(for index: Int, fromFunc: Bool = true){
         let actIndicator = activityIndicators[index-1]
         let prView = progressViews[index-1]
         
@@ -161,7 +157,9 @@ class FunctionProcessingViewController: UIViewController {
             actIndicator.startAnimating()
             prView.progress = 0
         }
-        print("++++++++++")
+        if fromFunc{
+            print("++++++++++")
+        }
     }
     
     func setProgress(_ progress: Float, for index: Int){
@@ -183,33 +181,25 @@ class FunctionProcessingViewController: UIViewController {
         print("----------")
     }
     
-    func stopAnimating(){
-        for indicator in [
-            task1ActivityIndicator,
-            task2ActivityIndicator,
-            task3ActivityIndicator,
-            task4ActivityIndicator,
-            task5ActivityIndicator
-        ] {
-            indicator!.stopAnimating()
-        }
-    }
-    
     
     @IBAction func startTask1(_ sender: Any) {
         processor.tasks.append(firstTask)
+        startProgress(for: 1, fromFunc: false)
         processor.run()
     }
     @IBAction func startTask2(_ sender: Any) {
         processor.tasks.append(secondTask)
+        startProgress(for: 2, fromFunc: false)
         processor.run()
     }
     @IBAction func startTask3(_ sender: Any) {
         processor.tasks.append(thirdTask)
+        startProgress(for: 3, fromFunc: false)
         processor.run()
     }
     @IBAction func startTask4(_ sender: Any) {
         processor.tasks.append(fourthTask)
+        startProgress(for: 4, fromFunc: false)
         processor.run()
     }
     @IBAction func startTask5(_ sender: Any) {
