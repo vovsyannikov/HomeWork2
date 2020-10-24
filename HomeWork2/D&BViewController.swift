@@ -23,10 +23,16 @@ class D_BViewController: UIViewController {
             let data = (try? Data(contentsOf: randomImageURL))!
             let image = UIImage(data: data)!
             DispatchQueue.main.async { [unowned self] in
-                self.imageView.image = image
-                self.progressLabel.text = "Размытие..."
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {                    self.imageView.image = image.blurred
-                    self.progressLabel.text = "Готово!"
+                imageView.image = image
+                progressLabel.text = "Размытие..."
+                DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 0.5) {
+                    let imageBlurred = image.blurred
+                    DispatchQueue.main.async {
+                        [unowned self] in
+                        imageView.image = imageBlurred
+                        progressLabel.text = "Готово!"
+                    }
+                    
                 }
             }
         }
