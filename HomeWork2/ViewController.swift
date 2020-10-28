@@ -17,18 +17,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         progressLabel.text = "Ожидание ввода"
     }
 
     @IBAction func download(_ sender: Any) {
-        self.progressLabel.text = "Загружается картинка..."
+        progressLabel.text = "Загружается картинка..."
         DispatchQueue.global(qos: .utility).async { [unowned self] in
             let data = (try? Data(contentsOf: randomImageURL))!
             let image = UIImage(data: data)
             DispatchQueue.main.async {
                 [unowned self] in
-                self.progressLabel.text = "Готово!"
-                self.imageView.image = image
+                progressLabel.text = "Готово!"
+                imageView.image = image
             }
         }
     }
