@@ -23,14 +23,18 @@
 NSString *words = @"";
 
 - (IBAction)add:(UIButton *)sender {
-    if ([words isEqual: @""]) {
-        words = _adderTextField.text;
-    } else {
-        words = [words stringByAppendingFormat: @" %@", _adderTextField.text];
+    if (![_adderTextField.text isEqual: @""]) {
+        if ([words isEqual: @""]) {
+            words = _adderTextField.text;
+        } else {
+            words = [words stringByAppendingFormat: @" %@", _adderTextField.text];
+        }
+        _wordsLabel.text = words;
     }
-    _wordsLabel.text = words;
 }
+
 - (IBAction)powerUp:(id)sender {
+    
 }
 
 - (void)viewDidLoad {
