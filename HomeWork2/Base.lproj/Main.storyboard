@@ -44,14 +44,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pju-PH-oMa">
-                                <rect key="frame" x="170" y="468" width="74" height="30"/>
+                                <rect key="frame" x="170" y="418" width="74" height="30"/>
                                 <state key="normal" title="Расчитать"/>
                                 <connections>
                                     <action selector="powerUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AOv-Q2-fhl"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="Q3r-EA-qP6">
-                                <rect key="frame" x="147" y="378" width="120" height="60"/>
+                                <rect key="frame" x="147" y="328" width="120" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hja-Ci-jlo">
                                         <rect key="frame" x="0.0" y="0.0" width="29" height="60"/>
@@ -68,7 +68,7 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="k" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-Kt-Yni">
-                                <rect key="frame" x="187" y="370.5" width="40.5" height="39.5"/>
+                                <rect key="frame" x="187" y="320.5" width="40.5" height="39.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -82,7 +82,7 @@
                             <constraint firstItem="lkA-Kt-Yni" firstAttribute="centerX" secondItem="Q3r-EA-qP6" secondAttribute="centerX" id="IGz-sa-nH0"/>
                             <constraint firstItem="Q3r-EA-qP6" firstAttribute="top" secondItem="lkA-Kt-Yni" secondAttribute="bottom" constant="-32" id="MqQ-Zb-QYx"/>
                             <constraint firstItem="pju-PH-oMa" firstAttribute="top" secondItem="Q3r-EA-qP6" secondAttribute="bottom" constant="30" id="Yjd-Xs-fzI"/>
-                            <constraint firstItem="lkA-Kt-Yni" firstAttribute="top" secondItem="AhI-qW-DuT" secondAttribute="bottom" constant="100" id="dYg-mO-R3T"/>
+                            <constraint firstItem="lkA-Kt-Yni" firstAttribute="top" secondItem="AhI-qW-DuT" secondAttribute="bottom" constant="50" id="dYg-mO-R3T"/>
                             <constraint firstItem="pju-PH-oMa" firstAttribute="centerX" secondItem="Q3r-EA-qP6" secondAttribute="centerX" id="khL-cD-RGu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AhI-qW-DuT" secondAttribute="trailing" constant="30" id="n4V-PN-BAB"/>
                         </constraints>
