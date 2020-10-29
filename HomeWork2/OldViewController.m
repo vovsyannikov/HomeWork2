@@ -22,7 +22,7 @@
 
 NSString *words = @"";
 
-- (IBAction)add:(UIButton *)sender {
+- (IBAction)add:(id)sender {
     if (![_adderTextField.text isEqual: @""]) {
         if ([words isEqual: @""]) {
             words = _adderTextField.text;
@@ -31,10 +31,24 @@ NSString *words = @"";
         }
         _wordsLabel.text = words;
     }
+    [_adderTextField setText: @""];
 }
 
 - (IBAction)powerUp:(id)sender {
-    
+    if (![_powerTextField.text isEqual: @""]){
+        int twoPowered = 1;
+        int power = [_powerTextField.text intValue];
+        for (int i = 0; i < power; i++){
+            twoPowered *= 2;
+        }
+        [_resultLabel setFont: [_resultLabel.font fontWithSize: 50] ];
+        [_resultLabel setTextColor: [UIColor blackColor]];
+        [_resultLabel setText: [[NSString alloc] initWithFormat: @"= %d\n", twoPowered]];
+    } else {
+        [_resultLabel setFont: [_resultLabel.font fontWithSize: 20]];
+        [_resultLabel setTextColor: [UIColor redColor]];
+        [_resultLabel setText: @"Введите целое число"];
+    }
 }
 
 - (void)viewDidLoad {

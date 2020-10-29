@@ -44,14 +44,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pju-PH-oMa">
-                                <rect key="frame" x="170" y="418" width="74" height="30"/>
+                                <rect key="frame" x="170" y="410.5" width="74" height="30"/>
                                 <state key="normal" title="Расчитать"/>
                                 <connections>
                                     <action selector="powerUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AOv-Q2-fhl"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="Q3r-EA-qP6">
-                                <rect key="frame" x="147" y="328" width="120" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q3r-EA-qP6">
+                                <rect key="frame" x="152" y="320.5" width="110.5" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hja-Ci-jlo">
                                         <rect key="frame" x="0.0" y="0.0" width="29" height="60"/>
@@ -59,19 +59,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="k" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-Kt-Yni">
+                                        <rect key="frame" x="34" y="0.0" width="40.5" height="39.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjc-Fy-7Eu">
-                                        <rect key="frame" x="89" y="0.0" width="31" height="60"/>
+                                        <rect key="frame" x="79.5" y="0.0" width="31" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qjc-Fy-7Eu" firstAttribute="centerY" secondItem="hja-Ci-jlo" secondAttribute="centerY" id="G6L-AJ-4lz"/>
+                                </constraints>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="k" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-Kt-Yni">
-                                <rect key="frame" x="187" y="320.5" width="40.5" height="39.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -79,10 +82,8 @@
                             <constraint firstItem="Q3r-EA-qP6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="56Z-6I-s2H"/>
                             <constraint firstItem="AhI-qW-DuT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="BSH-bw-cES"/>
                             <constraint firstItem="AhI-qW-DuT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="FLG-Ke-j0S"/>
-                            <constraint firstItem="lkA-Kt-Yni" firstAttribute="centerX" secondItem="Q3r-EA-qP6" secondAttribute="centerX" id="IGz-sa-nH0"/>
-                            <constraint firstItem="Q3r-EA-qP6" firstAttribute="top" secondItem="lkA-Kt-Yni" secondAttribute="bottom" constant="-32" id="MqQ-Zb-QYx"/>
                             <constraint firstItem="pju-PH-oMa" firstAttribute="top" secondItem="Q3r-EA-qP6" secondAttribute="bottom" constant="30" id="Yjd-Xs-fzI"/>
-                            <constraint firstItem="lkA-Kt-Yni" firstAttribute="top" secondItem="AhI-qW-DuT" secondAttribute="bottom" constant="50" id="dYg-mO-R3T"/>
+                            <constraint firstItem="Q3r-EA-qP6" firstAttribute="top" secondItem="AhI-qW-DuT" secondAttribute="bottom" constant="50" id="iZc-1y-9W7"/>
                             <constraint firstItem="pju-PH-oMa" firstAttribute="centerX" secondItem="Q3r-EA-qP6" secondAttribute="centerX" id="khL-cD-RGu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AhI-qW-DuT" secondAttribute="trailing" constant="30" id="n4V-PN-BAB"/>
                         </constraints>
@@ -116,11 +117,11 @@
             </objects>
             <point key="canvasLocation" x="-26.086956521739133" y="71.651785714285708"/>
         </scene>
-        <!--Item-->
+        <!--Obj-C-->
         <scene sceneID="kCZ-M6-k6c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oua-xc-BkT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gGQ-lQ-ZSd"/>
+                    <tabBarItem key="tabBarItem" title="Obj-C" image="at" catalog="system" id="gGQ-lQ-ZSd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Swh-uH-YXb">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -137,6 +138,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="at" catalog="system" width="128" height="124"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
