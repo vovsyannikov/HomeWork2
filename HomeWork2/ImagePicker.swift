@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
-//import ObjectiveC
+import ObjectiveC
 
 extension UIImagePickerController {
+    
     func getImage(for vc: UIViewController) {
         
         self.delegate = vc
@@ -17,10 +18,19 @@ extension UIImagePickerController {
         self.sourceType = .photoLibrary
         
         vc.present(self, animated: true)
+        
     }
+
 }
 
+private var AssociatedObjectImage: UInt8 = 0
 extension UIViewController: UIImagePickerControllerDelegate {
+
+    var pickedImage: UIImage? {
+        get { return objc_getAssociatedObject(self, &AssociatedObjectImage) as? UIImage }
+        set { objc_setAssociatedObject(self, &AssociatedObjectImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Cancelled")
     }
@@ -29,6 +39,7 @@ extension UIViewController: UIImagePickerControllerDelegate {
         guard let image = info[.originalImage] as? UIImage else {
             return
         }
+        pickedImage = image
         if let vc = self as? ViewController {
             vc.imageView.image = image
             vc.imageView.backgroundColor = UIColor.systemBackground
