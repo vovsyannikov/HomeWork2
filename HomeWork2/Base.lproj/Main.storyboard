@@ -145,32 +145,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id6-9G-oDn">
-                                <rect key="frame" x="179" y="433" width="56" height="30"/>
-                                <state key="normal" title="Do stuff"/>
-                                <connections>
-                                    <action selector="doStuff:" destination="NRI-Zo-IgN" eventType="touchUpInside" id="Tev-zk-Zol"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-JK-gUf">
+                                <rect key="frame" x="173.5" y="418" width="67" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAj-48-EOm">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
+                                        <state key="normal" title="Картинка"/>
+                                        <connections>
+                                            <action selector="pictureUp:" destination="NRI-Zo-IgN" eventType="touchUpInside" id="8cB-jg-0WB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id6-9G-oDn">
+                                        <rect key="frame" x="0.0" y="30" width="67" height="30"/>
+                                        <state key="normal" title="Переход"/>
+                                        <connections>
+                                            <action selector="doStuff:" destination="NRI-Zo-IgN" eventType="touchUpInside" id="Tev-zk-Zol"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-U1-6zI">
-                                <rect key="frame" x="75" y="215" width="264" height="143"/>
+                                <rect key="frame" x="143" y="215" width="128" height="128"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ldB-U1-6zI" secondAttribute="height" multiplier="1:1" id="ujM-o5-3Uj"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQo-j7-IPp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ldB-U1-6zI" firstAttribute="top" secondItem="gQo-j7-IPp" secondAttribute="top" constant="75" id="RGM-9d-hYW"/>
-                            <constraint firstItem="id6-9G-oDn" firstAttribute="centerY" secondItem="jca-nY-3zG" secondAttribute="centerY" id="XMO-go-Dtb"/>
-                            <constraint firstItem="id6-9G-oDn" firstAttribute="top" secondItem="ldB-U1-6zI" secondAttribute="bottom" constant="75" id="knp-Yj-QtA"/>
-                            <constraint firstItem="ldB-U1-6zI" firstAttribute="leading" secondItem="gQo-j7-IPp" secondAttribute="leading" constant="75" id="kx3-Ds-4s5"/>
-                            <constraint firstItem="id6-9G-oDn" firstAttribute="centerX" secondItem="jca-nY-3zG" secondAttribute="centerX" id="pfk-Lc-Bod"/>
-                            <constraint firstItem="gQo-j7-IPp" firstAttribute="trailing" secondItem="ldB-U1-6zI" secondAttribute="trailing" constant="75" id="wbB-kP-omK"/>
+                            <constraint firstItem="Qd5-JK-gUf" firstAttribute="centerY" secondItem="jca-nY-3zG" secondAttribute="centerY" id="HFt-gc-LSu"/>
+                            <constraint firstItem="ldB-U1-6zI" firstAttribute="top" secondItem="gQo-j7-IPp" secondAttribute="top" constant="75" id="K1F-Xo-RCr"/>
+                            <constraint firstItem="Qd5-JK-gUf" firstAttribute="centerX" secondItem="jca-nY-3zG" secondAttribute="centerX" id="PIO-Gu-HgC"/>
+                            <constraint firstItem="ldB-U1-6zI" firstAttribute="centerX" secondItem="jca-nY-3zG" secondAttribute="centerX" id="Tvc-GO-36v"/>
+                            <constraint firstItem="Qd5-JK-gUf" firstAttribute="top" secondItem="ldB-U1-6zI" secondAttribute="bottom" constant="75" id="qj1-m2-UIA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Swizzling" id="rTe-nJ-oNn"/>
                     <connections>
-                        <outlet property="fuckingButton" destination="id6-9G-oDn" id="LLy-au-NGI"/>
                         <outlet property="imageView" destination="ldB-U1-6zI" id="srg-mK-fKb"/>
                         <segue destination="drH-TF-Dsf" kind="show" identifier="Swizzle" id="7xt-hf-BN9"/>
                     </connections>
