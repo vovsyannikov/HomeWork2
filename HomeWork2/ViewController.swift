@@ -8,9 +8,7 @@
 import UIKit
 import ObjectiveC
 
-class ViewController: UIViewController {
-    
-    @IBOutlet weak var fuckingButton: UIButton!
+class ViewController: UIViewController{
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -19,17 +17,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.image = UIImage(systemName: "at")
+        
         counter = 0
     }
 
+    @IBAction func pictureUp(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        self.present(imagePicker, animated: true) {
+//            self.imageView.image = imagePicker.pickedImage
+//        }
+        
+        imagePicker.getImage(for: self)
+        
+    }
+    
     @IBAction func doStuff(_ sender: Any) {
         performSegueWithIdentifier(identifier: "Swizzle", sender: self) { (segue) in
             self.counter += 1
             let dest = segue.destination as! SecondViewController
-            print(dest)
             dest.text = "Hello world! #\(self.counter!)"
         }
     }
 }
-
-
