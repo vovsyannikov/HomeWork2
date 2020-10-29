@@ -14,6 +14,8 @@
 		3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B665252E4361004F8B15 /* Assets.xcassets */; };
 		3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */; };
 		3C434D5E254AEE5500A5EB9D /* OldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C434D5D254AEE5500A5EB9D /* OldViewController.m */; };
+		3C434D61254B085800A5EB9D /* SegueSwizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C434D60254B085800A5EB9D /* SegueSwizzler.swift */; };
+		3C434D64254B106300A5EB9D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C434D63254B106300A5EB9D /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3C434D5B254AEE5400A5EB9D /* HomeWork2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeWork2-Bridging-Header.h"; sourceTree = "<group>"; };
 		3C434D5C254AEE5500A5EB9D /* OldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldViewController.h; sourceTree = "<group>"; };
 		3C434D5D254AEE5500A5EB9D /* OldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldViewController.m; sourceTree = "<group>"; };
+		3C434D60254B085800A5EB9D /* SegueSwizzler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueSwizzler.swift; sourceTree = "<group>"; };
+		3C434D63254B106300A5EB9D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +67,11 @@
 				3C11B65C252E435C004F8B15 /* AppDelegate.swift */,
 				3C11B65E252E435C004F8B15 /* SceneDelegate.swift */,
 				3C11B660252E435C004F8B15 /* ViewController.swift */,
+				3C434D63254B106300A5EB9D /* SecondViewController.swift */,
 				3C11B662252E435D004F8B15 /* Main.storyboard */,
 				3C434D5C254AEE5500A5EB9D /* OldViewController.h */,
 				3C434D5D254AEE5500A5EB9D /* OldViewController.m */,
+				3C434D60254B085800A5EB9D /* SegueSwizzler.swift */,
 				3C11B665252E4361004F8B15 /* Assets.xcassets */,
 				3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */,
 				3C11B66A252E4361004F8B15 /* Info.plist */,
@@ -145,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C434D64254B106300A5EB9D /* SecondViewController.swift in Sources */,
 				3C434D5E254AEE5500A5EB9D /* OldViewController.m in Sources */,
 				3C11B661252E435C004F8B15 /* ViewController.swift in Sources */,
+				3C434D61254B085800A5EB9D /* SegueSwizzler.swift in Sources */,
 				3C11B65D252E435C004F8B15 /* AppDelegate.swift in Sources */,
 				3C11B65F252E435C004F8B15 /* SceneDelegate.swift in Sources */,
 			);
