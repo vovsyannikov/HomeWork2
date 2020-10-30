@@ -17,19 +17,16 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = UIImage(systemName: "at")
-        
         counter = 0
     }
 
     @IBAction func pictureUp(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        self.present(imagePicker, animated: true) {
-//            self.imageView.image = imagePicker.pickedImage
-//        }
         
-        imagePicker.getImage(for: self)
+        imagePicker.swizzling(vc: self) { (image) -> (Void) in
+            self.imageView.backgroundColor = UIColor.systemBackground
+            self.imageView.image = image
+        }
         
     }
     
