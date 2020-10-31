@@ -43,14 +43,10 @@ class ViewController: UIViewController  {
     func createFBShareButton() -> FBShareButton {
         let fbShare = FBShareButton()
         let fbContentToShare: SharingContent = ShareLinkContent()
-        fbContentToShare.contentURL = URL(string: "https://www.youtube.com")!
-        
-        let fbShareDialog = ShareDialog(fromViewController: self, content: fbContentToShare, delegate: self)
+        fbContentToShare.contentURL = URL(string: "https://www.skillbox.ru")!
         
         fbShare.center = view.center
         fbShare.shareContent = fbContentToShare
-        
-        fbShareDialog.show()
         
         return fbShare
     }
