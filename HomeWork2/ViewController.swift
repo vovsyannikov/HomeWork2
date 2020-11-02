@@ -26,6 +26,7 @@ class ViewController: UIViewController  {
         createFBShareButton()
         addSpacer(for: "ВКонтакте")
         createVKLoginButton()
+        createVKShareButton()
         
         view.addSubview(vStack)
         
@@ -81,15 +82,36 @@ class ViewController: UIViewController  {
     
     func createVKLoginButton(){
         let vkLogin = UIButton()
-        let auth = UIAction(handler: { (act) in
-            VKSdk.authorize(["email"])
-        })
+        let auth = UIAction{ (act) in
+            VKSdk.authorize(["email", "wall"])
+        }
         
         vkLogin.addAction(auth, for: .allTouchEvents)
         vkLogin.setTitle("Вход через ВК", for: .normal)
         vkLogin.backgroundColor = UIColor.systemBlue
         
         vStack.addArrangedSubview(vkLogin)
+    }
+    func createVKShareButton(){
+        let vkShare = UIButton()
+        let share = UIAction { (act) in
+            let vkShareController = VKShareDialogController()
+            vkShareController.shareLink =
+                VKShareLink.init(title: "Skillbox", link: URL(string: "https://www.skillbox.ru")!)
+            vkShareController.text = "Это окно сделано с помощью #VKSDK_iOS"
+            
+            vkShareController.dismissAutomatically = true
+            self.present(vkShareController, animated: true) {
+                print("Opening \(vkShareController)")
+                
+            }
+        }
+        
+        vkShare.addAction(share, for: .allTouchEvents)
+        vkShare.setTitle("Поделиться", for: .normal)
+        vkShare.backgroundColor = UIColor.systemBlue
+        
+        vStack.addArrangedSubview(vkShare)
     }
     
 }
@@ -119,3 +141,4 @@ extension ViewController: LoginButtonDelegate {
     
     
 }
+

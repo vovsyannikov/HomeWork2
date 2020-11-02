@@ -9,6 +9,7 @@
                 <key>CFBundleURLSchemes</key>
                 <array>
                     <string>fb358154668776426</string>
+                    <string>vk7648783</string>
                 </array>
             </dict>
         </array>
@@ -16,16 +17,6 @@
         <string>358154668776426</string>
         <key>FacebookDisplayName</key>
         <string>Social Integrator</string>
-        
-        <key>CFBundleURLTypes</key>
-        <array>
-            <dict>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>vk7648783</string>
-                </array>
-            </dict>
-        </array>
         <key>VKAppID</key>
         <string>7648783</string>
         
