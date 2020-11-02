@@ -7,5 +7,7 @@ target 'HomeWork2' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKPlacesKit'
+  
+  pod 'VK-ios-sdk'
 
 end
