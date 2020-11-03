@@ -9,5 +9,7 @@ target 'HomeWork2' do
   pod 'FBSDKPlacesKit'
   
   pod 'VK-ios-sdk'
+  
+  pod 'Swifter', :git => 'https://github.com/mattdonnelly/Swifter.git', :tag => '2.4.0'
 
 end

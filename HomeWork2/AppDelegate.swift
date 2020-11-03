@@ -8,6 +8,7 @@
 import UIKit
 import FBSDKCoreKit
 import VK_ios_sdk
+import Swifter
 
 // AppDelegate.swift
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,7 @@ import VK_ios_sdk
         
         ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         VKSdk.processOpen(url, fromApplication: sourceApplication)
+        Swifter.handleOpenURL(url, callbackURL: urlToShare)
         
         return true
     }
