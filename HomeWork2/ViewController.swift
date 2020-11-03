@@ -36,7 +36,7 @@ class ViewController: UIViewController  {
         createVKShareButton()
         addSpacer(for: "Twitter", to: vStackLeft)
         createTwitterLoginButton()
-    
+        createTwitterShareButton()
         
     }
     
@@ -166,7 +166,20 @@ class ViewController: UIViewController  {
         
         vStackLeft.addArrangedSubview(twitterButton)
     }
-    
+    func createTwitterShareButton(){
+        let friendsController = FriendsViewController()
+        let someButton = UIButton()
+        let action = UIAction { _ in
+            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
+        }
+        
+//        self.navigationController?.addChild(friendsController)
+        
+        someButton.addAction(action, for: .touchUpInside)
+        someButton.backgroundColor = .black
+        
+        vStackRight.addArrangedSubview(someButton)
+    }
 }
 
 //MARK: Facebook Login BTN Delegate
