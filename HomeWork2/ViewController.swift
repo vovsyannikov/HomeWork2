@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKShareKit
 
+
 import VK_ios_sdk
 
 import SwifteriOS
@@ -211,21 +212,21 @@ class ViewController: UIViewController  {
         let auth = UIAction { _ in
             let authViewController = authUI?.authViewController()
             self.present(authViewController!, animated: true) {
-                print("Presenting \(authViewController)")
-                print(authUI?.auth)
+                print("Presenting \(String(describing: authViewController))")
+                print(authUI?.auth as Any)
             }
         }
         
         
         googleLogin.addAction(auth, for: .touchUpInside)
         googleLogin.backgroundColor = .systemGray
-        googleLogin.setTitle("Войти через Google", for: .normal)
+        googleLogin.setTitle("Вход через Google", for: .normal)
         
         vStackLeft.addArrangedSubview(googleLogin)
     }
 }
 
-//MARK: Facebook Login BTN Delegate
+//MARK: Facebook Delegate
 extension ViewController: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
@@ -246,17 +247,31 @@ extension ViewController: LoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("Did Logout ")
+        print("Did Logout from Facebook")
     }
     
     
 }
 
+//MARK: VK Delegate
+extension ViewController: VKSdkDelegate{
+    func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
+        print("VK result > \(String(describing: result))")
+    }
+    
+    func vkSdkUserAuthorizationFailed() {
+        print("Failed auth from VK")
+    }
+    
+    
+}
+
+//MARK: Google Delegate
 extension ViewController: FUIAuthDelegate{
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        print("The user is \(authDataResult?.user.providerData) with \(authUI)")
+        print("The user is \(String(describing: authDataResult?.user.providerData)) with \(authUI)")
         if error != nil {
-            print("Google error > \(error)")
+            print("Google error > \(String(describing: (error)))")
         }
     }
 }

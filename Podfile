@@ -15,6 +15,5 @@ target 'HomeWork2' do
   pod 'Firebase/Auth'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
-#  pod 'FirebaseUI/Facebook'
 
 end
