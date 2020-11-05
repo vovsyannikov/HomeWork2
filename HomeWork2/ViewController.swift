@@ -7,9 +7,9 @@
 
 import UIKit
 
+import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
-
 
 import VK_ios_sdk
 
@@ -19,7 +19,24 @@ import FirebaseUI
 
 let urlToShare = URL(string: "https://www.skillbox.ru")!
 
+class Friend: CustomStringConvertible {
+    var description: String { name }
+    
+    var name: String = ""
+    var icon = UIImage()
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    convenience init() {
+        self.init(name: "Friend")
+    }
+}
+
+
 class ViewController: UIViewController  {
+    var friends: [Friend] = []
     
     var vStackLeft = UIStackView()
     var vStackRight = UIStackView()
@@ -47,6 +64,15 @@ class ViewController: UIViewController  {
         addSpacer(for: "Google", to: vStackLeft)
         createGoogleLoginButton()
         
+        addSpacer(for: "Facebook", to: vStackRight)
+        createFBFriendsButton()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? FriendsViewController, segue.identifier == "FriendsList"{
+            vc.friends = friends
+            print("Prepared \(vc)")
+        }
     }
     
     // Выставление вертикального стека ...
@@ -103,9 +129,8 @@ class ViewController: UIViewController  {
         let fbLogin = FBLoginButton()
         
         fbLogin.delegate = self
-        fbLogin.permissions = ["email", "public_profile"]
+        fbLogin.permissions = ["email", "public_profile", "user_friends"]
         fbLogin.center = view.center
-        
         
         vStackLeft.addArrangedSubview(fbLogin)
         
@@ -121,6 +146,46 @@ class ViewController: UIViewController  {
         
         vStackLeft.addArrangedSubview(fbShare)
     }
+    func createFBFriendsButton(){
+        func getFBFriends(){
+            friends = []
+            let friendRequest = GraphRequest(graphPath: "me/friends")
+            friendRequest.start { [unowned self] (connection, data, error) in
+                
+                if let dict = data as? NSDictionary{
+                    let dictData = dict["data"] as? NSArray
+                    let friendCountDict = dict["summary"] as? NSDictionary
+                    var friendCount = 0
+                    for (k, v) in friendCountDict!{
+                        if k as! String == "total_count" { friendCount = (v as? Int)! }
+                    }
+                    
+                    for i in 1...friendCount {
+                        self.friends.append(Friend(name: "Friend \(i)"))
+                        self.friends[i-1].icon = UIImage(systemName: "\(i).circle")!
+                        if dictData?.count != 0 {
+                            // Добавляем имя, если оно есть
+                        }
+                    }
+                }
+            }
+        }
+        let fbFriends = UIButton()
+        let getFriends = UIAction{ _ in
+            getFBFriends()
+            print("Performing segue")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.performSegue(withIdentifier: "FriendsList", sender: self)
+            }
+        }
+        
+        fbFriends.addAction(getFriends, for: .touchUpInside)
+        fbFriends.backgroundColor = .systemBlue
+        fbFriends.setTitle("Друзья FB", for: .normal)
+        
+        
+        vStackRight.addArrangedSubview(fbFriends)
+    }
     
     //MARK: VK
     func createVKLoginButton(){
@@ -129,6 +194,8 @@ class ViewController: UIViewController  {
             VKSdk.authorize(["email", "wall", "friends"])
         }
         
+        let vkImage = UIImage(named: "ic_vk_activity_logo")
+
         vkLogin.addAction(auth, for: .touchUpInside)
         vkLogin.setTitle("Вход через ВК", for: .normal)
         vkLogin.backgroundColor = UIColor.systemBlue

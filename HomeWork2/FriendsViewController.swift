@@ -8,17 +8,31 @@
 import UIKit
 
 class FriendsViewController: UIViewController {
-
-    var friends: [(icon: UIImage, name: String)] = []
+    
+    var friends: [Friend] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        print("Loaded \(self)", "Friends = \(friends)", separator: "\n")
     }
     
 }
 
-extension FriendsViewController: UITableViewDelegate{
+extension FriendsViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friends.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Friend") as! FriendTableViewCell
+        let friend = friends[indexPath.row]
+        
+        cell.nameLabel.text = friend.name
+        cell.iconImageView.image = friend.icon
+        
+        return cell
+    }
+    
     
 }
