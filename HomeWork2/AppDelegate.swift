@@ -9,6 +9,8 @@ import UIKit
 import FBSDKCoreKit
 import VK_ios_sdk
 import Swifter
+import Firebase
+import FirebaseUI
 
 // AppDelegate.swift
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +20,15 @@ import Swifter
         
         VKSdk.initialize(withAppId: "7648783")?.uiDelegate = self
         
+        FirebaseApp.configure()
+        
         return true
     }
     func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
 
         VKSdk.processOpen(url, fromApplication: options[.sourceApplication] as? String)
+        
         
         return true
     }
@@ -33,6 +38,9 @@ import Swifter
         ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         VKSdk.processOpen(url, fromApplication: sourceApplication)
         Swifter.handleOpenURL(url, callbackURL: urlToShare)
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
         
         return true
     }

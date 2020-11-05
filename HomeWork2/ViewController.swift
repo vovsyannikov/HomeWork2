@@ -14,6 +14,8 @@ import VK_ios_sdk
 
 import SwifteriOS
 
+import FirebaseUI
+
 let urlToShare = URL(string: "https://www.skillbox.ru")!
 
 class ViewController: UIViewController  {
@@ -21,8 +23,9 @@ class ViewController: UIViewController  {
     var vStackLeft = UIStackView()
     var vStackRight = UIStackView()
     
-    let TWITTER_CONSUMER_KEY = ""
-    let TWITTER_SECRET_KEY = ""
+    //MARK: TODO: Add keys to twitterLogin
+    private let TWITTER_CONSUMER_KEY = ""
+    private let TWITTER_SECRET_KEY = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,8 @@ class ViewController: UIViewController  {
         addSpacer(for: "Twitter", to: vStackLeft)
         createTwitterLoginButton()
         createTwitterShareButton()
+        addSpacer(for: "Google", to: vStackLeft)
+        createGoogleLoginButton()
         
     }
     
@@ -100,6 +105,7 @@ class ViewController: UIViewController  {
         fbLogin.permissions = ["email", "public_profile"]
         fbLogin.center = view.center
         
+        
         vStackLeft.addArrangedSubview(fbLogin)
         
     }
@@ -151,7 +157,6 @@ class ViewController: UIViewController  {
     }
     
     //MARK: Twitter
-    //MARK: TODO: Add keys to twitterLogin
     func createTwitterLoginButton(){
         let twitterButton = UIButton()
         let auth = UIAction { [unowned self] _ in
@@ -194,6 +199,30 @@ class ViewController: UIViewController  {
 //
 //        vStackRight.addArrangedSubview(someButton)
     }
+    
+    //MARK: Google
+    func createGoogleLoginButton(){
+        let authUI = FUIAuth.defaultAuthUI()
+//        let authProviders = [FUIGoogleAuth, FUIFace]
+        authUI?.delegate = self
+        authUI?.providers.append(FUIGoogleAuth())
+        
+        let googleLogin = UIButton()
+        let auth = UIAction { _ in
+            let authViewController = authUI?.authViewController()
+            self.present(authViewController!, animated: true) {
+                print("Presenting \(authViewController)")
+                print(authUI?.auth)
+            }
+        }
+        
+        
+        googleLogin.addAction(auth, for: .touchUpInside)
+        googleLogin.backgroundColor = .systemGray
+        googleLogin.setTitle("Войти через Google", for: .normal)
+        
+        vStackLeft.addArrangedSubview(googleLogin)
+    }
 }
 
 //MARK: Facebook Login BTN Delegate
@@ -223,3 +252,11 @@ extension ViewController: LoginButtonDelegate {
     
 }
 
+extension ViewController: FUIAuthDelegate{
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        print("The user is \(authDataResult?.user.providerData) with \(authUI)")
+        if error != nil {
+            print("Google error > \(error)")
+        }
+    }
+}

@@ -11,5 +11,10 @@ target 'HomeWork2' do
   pod 'VK-ios-sdk'
   
   pod 'Swifter', :git => 'https://github.com/mattdonnelly/Swifter.git', :tag => '2.4.0'
+  
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+#  pod 'FirebaseUI/Facebook'
 
 end

@@ -16,6 +16,7 @@
 		3C11B664252E435D004F8B15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B662252E435D004F8B15 /* Main.storyboard */; };
 		3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B665252E4361004F8B15 /* Assets.xcassets */; };
 		3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */; };
+		3C59320D2554286600F534B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C59320C2554286600F534B0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3C11B665252E4361004F8B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C11B668252E4361004F8B15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C11B66A252E4361004F8B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C59320C2554286600F534B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE2D1B0A065C485059D9329A /* Pods-HomeWork2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeWork2.release.xcconfig"; path = "Target Support Files/Pods-HomeWork2/Pods-HomeWork2.release.xcconfig"; sourceTree = "<group>"; };
 		E6F29191F7C0CBA7DA67CF46 /* Pods_HomeWork2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeWork2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				3C11B665252E4361004F8B15 /* Assets.xcassets */,
 				3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */,
 				3C11B66A252E4361004F8B15 /* Info.plist */,
+				3C59320C2554286600F534B0 /* GoogleService-Info.plist */,
 			);
 			path = HomeWork2;
 			sourceTree = "<group>";
@@ -109,6 +112,7 @@
 				3C11B656252E435C004F8B15 /* Frameworks */,
 				3C11B657252E435C004F8B15 /* Resources */,
 				C23CE9DBF7BBA7A78E9C97B4 /* [CP] Embed Pods Frameworks */,
+				B7A6FBD60476ECCB9BE7AFD8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -157,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */,
+				3C59320D2554286600F534B0 /* GoogleService-Info.plist in Resources */,
 				3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */,
 				3C11B664252E435D004F8B15 /* Main.storyboard in Resources */,
 			);
@@ -185,6 +190,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7A6FBD60476ECCB9BE7AFD8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomeWork2/Pods-HomeWork2-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomeWork2/Pods-HomeWork2-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomeWork2/Pods-HomeWork2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C23CE9DBF7BBA7A78E9C97B4 /* [CP] Embed Pods Frameworks */ = {
