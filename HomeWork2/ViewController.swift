@@ -66,7 +66,8 @@ class ViewController: UIViewController  {
         
         addSpacer(for: "Facebook", to: vStackRight)
         createFBFriendsButton()
-//        addSpacer(for: "ВКонтакте", to: vStackRight)
+        addSpacer(for: "ВКонтакте", to: vStackRight)
+        createVKFriendsButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,8 +196,8 @@ class ViewController: UIViewController  {
             VKSdk.authorize(["email", "wall", "friends"])
         }
         
-        let vkImage = UIImage(named: "ic_vk_activity_logo")
-
+//        let vkImage = UIImage(named: "ic_vk_activity_logo")
+        
         vkLogin.addAction(auth, for: .touchUpInside)
         vkLogin.setTitle("Вход через ВК", for: .normal)
         vkLogin.backgroundColor = UIColor.systemBlue
@@ -224,6 +225,55 @@ class ViewController: UIViewController  {
         
         vStackLeft.addArrangedSubview(vkShare)
     }
+    func createVKFriendsButton(){
+        func getVKFriends(){
+            friends = []
+            let vkRequest: VKRequest = VKApiFriends().get()
+            vkRequest.execute { (response) in
+                if let data = response?.json as? NSDictionary{
+                    print(data)
+                    
+                    var friendsData: NSArray = []
+                    //Когда создасться первый элемент, счетчик будет = 0 и указывать на первый элемент массива
+                    var counter = -1
+                    for (k, v) in data["response"] as! NSDictionary{
+                        if k as? String == "items" { friendsData = (v as? NSArray)! }
+                    }
+                    for entry in friendsData {
+                        counter += 1
+                        self.friends.append(Friend())
+                        for (k, v) in entry as! NSDictionary {
+                            let friend = self.friends[counter]
+                            if k as? String == "first_name" {
+                                friend.name.append((v as? String)!)
+                            }
+                            if k as? String == "second_name" {
+                                friend.name.insert(contentsOf: "\((v as? String)!) ", at: friend.name.startIndex)
+                            }
+                        }
+                    }
+                }
+            } errorBlock: { (error) in
+                print("VK friends error \(String(describing: error))")
+            }
+            
+            
+        }
+        let vkFriends = UIButton()
+        let getFriends = UIAction{ _ in
+            getVKFriends()
+            // Разкоментить, когда будет смысле в переходе на другой экран
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.performSegue(withIdentifier: "FriendsList", sender: self)
+//            }
+        }
+        
+        vkFriends.addAction(getFriends, for: .touchUpInside)
+        vkFriends.backgroundColor = .systemBlue
+        vkFriends.setTitle("Друзья ВК", for: .normal)
+        
+        vStackRight.addArrangedSubview(vkFriends)
+    }
     
     //MARK: Twitter
     func createTwitterLoginButton(){
@@ -232,7 +282,7 @@ class ViewController: UIViewController  {
             let twitterHandler = Swifter(consumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_SECRET_KEY)
             twitterHandler.authorize(withCallback: urlToShare, presentingFrom: self) { (token, response) in
                 print("Token = \(token.debugDescription)", "Response = \(response)", separator: "\n")
-
+                
             }
             
             print("Action made")
@@ -258,21 +308,21 @@ class ViewController: UIViewController  {
         twitterShare.setTitle("Твитнуть", for: .normal)
         
         vStackLeft.addArrangedSubview(twitterShare)
-//        let someButton = UIButton()
-//        let action = UIAction { _ in
-//            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
-//        }
-//
-//        someButton.addAction(action, for: .touchUpInside)
-//        someButton.backgroundColor = .black
-//
-//        vStackRight.addArrangedSubview(someButton)
+        //        let someButton = UIButton()
+        //        let action = UIAction { _ in
+        //            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
+        //        }
+        //
+        //        someButton.addAction(action, for: .touchUpInside)
+        //        someButton.backgroundColor = .black
+        //
+        //        vStackRight.addArrangedSubview(someButton)
     }
     
     //MARK: Google
     func createGoogleLoginButton(){
         let authUI = FUIAuth.defaultAuthUI()
-//        let authProviders = [FUIGoogleAuth, FUIFace]
+        //        let authProviders = [FUIGoogleAuth, FUIFace]
         authUI?.delegate = self
         authUI?.providers.append(FUIGoogleAuth())
         
