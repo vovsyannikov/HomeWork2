@@ -66,6 +66,7 @@ class ViewController: UIViewController  {
         
         addSpacer(for: "Facebook", to: vStackRight)
         createFBFriendsButton()
+//        addSpacer(for: "ВКонтакте", to: vStackRight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +103,7 @@ class ViewController: UIViewController  {
         vStackRight.spacing = 5
         
         // Для выравнивания элементов обоих стеков по верхней границе
-//        hStack.alignment = .top
+        hStack.alignment = .top
         
         hStack.addArrangedSubview(vStackLeft)
         hStack.addArrangedSubview(vStackRight)
