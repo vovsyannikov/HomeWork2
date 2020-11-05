@@ -21,6 +21,9 @@ class ViewController: UIViewController  {
     var vStackLeft = UIStackView()
     var vStackRight = UIStackView()
     
+    let TWITTER_CONSUMER_KEY = ""
+    let TWITTER_SECRET_KEY = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -151,10 +154,11 @@ class ViewController: UIViewController  {
     //MARK: TODO: Add keys to twitterLogin
     func createTwitterLoginButton(){
         let twitterButton = UIButton()
-        let auth = UIAction { _ in
-            let twitterLogin = Swifter(consumerKey: "", consumerSecret: "")
-            twitterLogin.authorize(withCallback: urlToShare, presentingFrom: self) { (token, response) in
+        let auth = UIAction { [unowned self] _ in
+            let twitterHandler = Swifter(consumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_SECRET_KEY)
+            twitterHandler.authorize(withCallback: urlToShare, presentingFrom: self) { (token, response) in
                 print("Token = \(token.debugDescription)", "Response = \(response)", separator: "\n")
+
             }
             
             print("Action made")
@@ -167,18 +171,28 @@ class ViewController: UIViewController  {
         vStackLeft.addArrangedSubview(twitterButton)
     }
     func createTwitterShareButton(){
-        let friendsController = FriendsViewController()
-        let someButton = UIButton()
-        let action = UIAction { _ in
-            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
+        let twitterShare = UIButton()
+        let share = UIAction { [unowned self] _ in
+            let twitterHandler = Swifter(consumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_SECRET_KEY)
+            
+            twitterHandler.postTweet(status: "Test" , media: urlToShare.dataRepresentation)
+            
         }
         
-//        self.navigationController?.addChild(friendsController)
+        twitterShare.addAction(share, for: .touchUpInside)
+        twitterShare.backgroundColor = .systemBlue
+        twitterShare.setTitle("Твитнуть", for: .normal)
         
-        someButton.addAction(action, for: .touchUpInside)
-        someButton.backgroundColor = .black
-        
-        vStackRight.addArrangedSubview(someButton)
+        vStackLeft.addArrangedSubview(twitterShare)
+//        let someButton = UIButton()
+//        let action = UIAction { _ in
+//            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
+//        }
+//
+//        someButton.addAction(action, for: .touchUpInside)
+//        someButton.backgroundColor = .black
+//
+//        vStackRight.addArrangedSubview(someButton)
     }
 }
 

@@ -8,6 +8,8 @@
 import UIKit
 
 class FriendsViewController: UIViewController {
+
+    var friends: [(icon: UIImage, name: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +17,8 @@ class FriendsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+}
 
+extension FriendsViewController: UITableViewDelegate{
+    
 }
