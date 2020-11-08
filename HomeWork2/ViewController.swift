@@ -13,7 +13,7 @@ import FBSDKShareKit
 
 import VK_ios_sdk
 
-import SwifteriOS
+import Swifter
 
 import FirebaseUI
 
@@ -262,7 +262,7 @@ class ViewController: UIViewController  {
         let vkFriends = UIButton()
         let getFriends = UIAction{ _ in
             getVKFriends()
-            // Разкоментить, когда будет смысле в переходе на другой экран
+            // Раскоментить, когда будет смысл в переходе на другой экран
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //                self.performSegue(withIdentifier: "FriendsList", sender: self)
 //            }
@@ -282,50 +282,38 @@ class ViewController: UIViewController  {
             let twitterHandler = Swifter(consumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_SECRET_KEY)
             twitterHandler.authorize(withCallback: urlToShare, presentingFrom: self) { (token, response) in
                 print("Token = \(token.debugDescription)", "Response = \(response)", separator: "\n")
-                
             }
-            
             print("Action made")
         }
-        
+
         twitterButton.addAction(auth, for: .touchUpInside)
-        twitterButton.backgroundColor = UIColor.systemBlue
+        twitterButton.backgroundColor = .systemBlue
         twitterButton.setTitle("Вход через Twitter", for: .normal)
-        
+
         vStackLeft.addArrangedSubview(twitterButton)
     }
     func createTwitterShareButton(){
         let twitterShare = UIButton()
         let share = UIAction { [unowned self] _ in
             let twitterHandler = Swifter(consumerKey: TWITTER_CONSUMER_KEY, consumerSecret: TWITTER_SECRET_KEY)
-            
+
             twitterHandler.postTweet(status: "Test" , media: urlToShare.dataRepresentation)
-            
+
         }
-        
+
         twitterShare.addAction(share, for: .touchUpInside)
         twitterShare.backgroundColor = .systemBlue
         twitterShare.setTitle("Твитнуть", for: .normal)
-        
+
         vStackLeft.addArrangedSubview(twitterShare)
-        //        let someButton = UIButton()
-        //        let action = UIAction { _ in
-        //            self.performSegue(withIdentifier: "FriendsList", sender: someButton)
-        //        }
-        //
-        //        someButton.addAction(action, for: .touchUpInside)
-        //        someButton.backgroundColor = .black
-        //
-        //        vStackRight.addArrangedSubview(someButton)
     }
     
     //MARK: Google
     func createGoogleLoginButton(){
         let authUI = FUIAuth.defaultAuthUI()
-        //        let authProviders = [FUIGoogleAuth, FUIFace]
         authUI?.delegate = self
         authUI?.providers.append(FUIGoogleAuth())
-        
+
         let googleLogin = UIButton()
         let auth = UIAction { _ in
             let authViewController = authUI?.authViewController()
@@ -334,12 +322,12 @@ class ViewController: UIViewController  {
                 print(authUI?.auth as Any)
             }
         }
-        
-        
+
+
         googleLogin.addAction(auth, for: .touchUpInside)
         googleLogin.backgroundColor = .systemGray
         googleLogin.setTitle("Вход через Google", for: .normal)
-        
+
         vStackLeft.addArrangedSubview(googleLogin)
     }
 }

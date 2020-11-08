@@ -36,8 +36,11 @@ import FirebaseUI
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
         VKSdk.processOpen(url, fromApplication: sourceApplication)
+        
         Swifter.handleOpenURL(url, callbackURL: urlToShare)
+
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
             return true
         }
