@@ -26,7 +26,7 @@ import FirebaseUI
     }
     func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
-
+        
         VKSdk.processOpen(url, fromApplication: options[.sourceApplication] as? String)
         
         
@@ -40,7 +40,7 @@ import FirebaseUI
         VKSdk.processOpen(url, fromApplication: sourceApplication)
         
         Swifter.handleOpenURL(url, callbackURL: urlToShare)
-
+        
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
             return true
         }
@@ -52,18 +52,24 @@ import FirebaseUI
 
 extension AppDelegate: VKSdkUIDelegate{
     func vkSdkShouldPresent(_ controller: UIViewController!) {
-        let vc = UIApplication.shared.keyWindow?.rootViewController
-        if vc?.presentedViewController != nil {
-            vc?.dismiss(animated: true, completion: {
-                print("Hiding \(vc?.description)")
-                vc?.present(controller, animated: true, completion: {
-                    print("Presenting \(controller.description)")
-                })
-            })
-        } else {
-            vc?.present(controller, animated: true, completion: {
-                print("Opening \(controller.description) through Safari")
-            })
+        if let keyWindow = UIApplication.shared.windows
+            .filter({$0.isKeyWindow}).first {
+            let vc = keyWindow.rootViewController
+            if vc?.presentedViewController != nil {
+                vc?.dismiss(animated: false) {
+                    print("Hiding \(String(describing: vc?.description))")
+                    
+                    vc?.present(controller, animated: true) {
+                        print("Presenting \(controller.description)")
+                    }
+                }
+            } else {
+                vc?.present(controller, animated: true) {
+                    print("Opening \(controller.description) through Safari")
+                    VKSdk.authorize(vkPermissions)
+                }
+                
+            }
         }
     }
     
@@ -71,5 +77,13 @@ extension AppDelegate: VKSdkUIDelegate{
         print("Need to enter captcha")
     }
     
-    
+    func vkSdkWillDismiss(_ controller: UIViewController!) {
+        print(VKSdk.isLoggedIn())
+        if VKSdk.isLoggedIn() {
+            controller.dismiss(animated: true) {
+                print("Dismissed")
+            }
+        }
+    }
 }
+
