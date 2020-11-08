@@ -18,6 +18,7 @@ import Swifter
 import FirebaseUI
 
 let urlToShare = URL(string: "https://www.skillbox.ru")!
+let vkPermissions = ["email", "wall", "friends"]
 
 class Friend: CustomStringConvertible {
     var description: String { name }
@@ -29,8 +30,9 @@ class Friend: CustomStringConvertible {
         self.name = name
     }
     
-    convenience init() {
-        self.init(name: "Friend")
+    convenience init(indexed i: Int) {
+        self.init(name: "Друг \(i)")
+        icon = UIImage(systemName: "\(i > 50 ? i - 50 : i).circle")!
     }
 }
 
@@ -163,8 +165,7 @@ class ViewController: UIViewController  {
                     }
                     
                     for i in 1...friendCount {
-                        self.friends.append(Friend(name: "Friend \(i)"))
-                        self.friends[i-1].icon = UIImage(systemName: "\(i).circle")!
+                        self.friends.append(Friend(indexed: i))
                         if dictData?.count != 0 {
                             // Добавляем имя, если оно есть
                         }
@@ -193,7 +194,7 @@ class ViewController: UIViewController  {
     func createVKLoginButton(){
         let vkLogin = UIButton()
         let auth = UIAction{ _ in
-            VKSdk.authorize(["email", "wall", "friends"])
+            VKSdk.authorize(vkPermissions)
         }
         
 //        let vkImage = UIImage(named: "ic_vk_activity_logo")
@@ -233,25 +234,14 @@ class ViewController: UIViewController  {
                 if let data = response?.json as? NSDictionary{
                     print(data)
                     
-                    var friendsData: NSArray = []
-                    //Когда создасться первый элемент, счетчик будет = 0 и указывать на первый элемент массива
-                    var counter = -1
-                    for (k, v) in data["response"] as! NSDictionary{
-                        if k as? String == "items" { friendsData = (v as? NSArray)! }
-                    }
-                    for entry in friendsData {
-                        counter += 1
-                        self.friends.append(Friend())
-                        for (k, v) in entry as! NSDictionary {
-                            let friend = self.friends[counter]
-                            if k as? String == "first_name" {
-                                friend.name.append((v as? String)!)
-                            }
-                            if k as? String == "second_name" {
-                                friend.name.insert(contentsOf: "\((v as? String)!) ", at: friend.name.startIndex)
+                    for (k, v) in data {
+                        if k as? String == "items" {
+                            for (i, el) in (v as! Array<Int>).enumerated() {
+                                self.friends.append(Friend(indexed: i+1))
                             }
                         }
                     }
+                    
                 }
             } errorBlock: { (error) in
                 print("VK friends error \(String(describing: error))")
@@ -263,9 +253,9 @@ class ViewController: UIViewController  {
         let getFriends = UIAction{ _ in
             getVKFriends()
             // Раскоментить, когда будет смысл в переходе на другой экран
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.performSegue(withIdentifier: "FriendsList", sender: self)
-//            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.performSegue(withIdentifier: "FriendsList", sender: self)
+            }
         }
         
         vkFriends.addAction(getFriends, for: .touchUpInside)
