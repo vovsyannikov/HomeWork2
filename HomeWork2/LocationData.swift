@@ -9,6 +9,36 @@ import Foundation
 import CoreLocation
 import MapKit
 
+public func createButtons(completion: (UIStackView) -> ()){
+    let zoomInButton = UIButton()
+    let zoomOutButton = UIButton()
+    let centerButton = UIButton()
+    let vStack = UIStackView()
+    
+    vStack.frame = CGRect(x: 0, y: 0, width: 50, height: 160)
+    
+    vStack.axis = .vertical
+    vStack.distribution = .fillEqually
+    vStack.spacing = 5
+    
+    zoomInButton.setImage(UIImage(systemName: "plus"), for: .normal)
+    zoomOutButton.setImage(UIImage(systemName: "minus"), for: .normal)
+    centerButton.setImage(UIImage(systemName: "arrowtriangle.up"), for: .normal)
+    centerButton.transform = CGAffineTransform(rotationAngle: -(.pi/4))
+    zoomInButton.tag = 10
+    zoomOutButton.tag = 20
+    centerButton.tag = 30
+    
+    for btn in [zoomInButton, zoomOutButton, centerButton] {
+        btn.backgroundColor = .systemGray4
+        btn.imageView?.tintColor = .black
+        btn.layer.cornerRadius = vStack.frame.width/2
+        vStack.addArrangedSubview(btn)
+    }
+    
+    completion(vStack)
+}
+
 class Place: NSObject, MKAnnotation{
     var title: String?
     var coordinate: CLLocationCoordinate2D

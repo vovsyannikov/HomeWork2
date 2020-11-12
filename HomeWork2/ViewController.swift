@@ -15,7 +15,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        appleMapView.delegate = self
+        createButtons { (vStack) in
+            vStack.center = CGPoint(x: view.bounds.maxX - vStack.frame.width, y: view.center.y)
+            
+            for el in vStack.arrangedSubviews {
+                let btn = el as! UIButton
+                switch btn.tag {
+                case 10: btn.addAction(zoomIn(), for: .touchUpInside)
+                case 20: btn.addAction(zoomOut(), for: .touchUpInside)
+                case 30: btn.addAction(centerOnUser()!, for: .touchUpInside)
+                default: break
+                }
+            }
+            
+            self.view.addSubview(vStack)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -26,6 +41,47 @@ class ViewController: UIViewController {
         
     }
     
+    func zoomIn() -> UIAction{
+        let zoomInAction = UIAction{ [unowned self] _ in
+            print("Zooming in")
+            
+            // Creating camera that is twice as far as current one
+            let camera: MKMapCamera = .init(lookingAtCenter: appleMapView.centerCoordinate, fromDistance: appleMapView.camera.altitude / 2, pitch: 0, heading: appleMapView.camera.heading)
+            
+            // Zooming map
+            appleMapView.setCamera(camera, animated: true)
+            
+        }
+        
+        return zoomInAction
+    }
+    func zoomOut() -> UIAction{
+        let zoomOutAction = UIAction{ [unowned self] _ in
+            print("Zooming out")
+            
+            // Creating camera that is twice as close as current one
+            let camera: MKMapCamera = .init(lookingAtCenter: appleMapView.centerCoordinate, fromDistance: appleMapView.camera.altitude * 2, pitch: 0, heading: appleMapView.camera.heading)
+            
+            // Zooming map
+            appleMapView.setCamera(camera, animated: true)
+        }
+        
+        return zoomOutAction
+    }
+    func centerOnUser() -> UIAction? {
+        let centerOnUserAction = UIAction { [unowned self] _ in
+            let lm = LocationData.shared
+            guard let currentLoc = lm.currentLocation else { return }
+            
+            // Creating camera that looks at the user
+            let camera = MKMapCamera(lookingAtCenter: currentLoc, fromDistance: 2_000, pitch: 0, heading: appleMapView.camera.heading)
+            
+            // Moving camera
+            appleMapView.setCamera(camera, animated: true)
+        }
+        
+        return centerOnUserAction
+    }
     func createAnnotations(){
         let places: [Place] = [
             Place(title: "Красная площадь", coordinate: CLLocationCoordinate2D(latitude: 55.754012, longitude: 37.620537)),
@@ -36,23 +92,17 @@ class ViewController: UIViewController {
         ]
         
         appleMapView.addAnnotations(places)
+        appleMapView.showAnnotations(places, animated: true)
+        print(appleMapView.camera.altitude)
     }
     func getCurrentPosition(){
         let lm = LocationData.shared
         // Запрос разрешения геопозиции
-        lm.requestAccess { successeded in
+        lm.requestAccess { (successeded) in
             if successeded {
                 // Если разрешение получено, то запросить геопозицию
-                lm.getLocation { [unowned self] (location) in
+                lm.getLocation { (location) in
                     print(location!)
-                    
-                    // Приближение карты
-                    let radius: CLLocationDistance = 1_000
-                    // Задание региона с центром в текущей позиции (location) и приближением (radius)
-                    let region: MKCoordinateRegion = .init(center: lm.currentLocation!, latitudinalMeters: radius, longitudinalMeters: radius)
-                    
-                    // Перемещение карты
-//                    self.appleMapView.setRegion(region, animated: true)
                 }
             }
         }
@@ -60,11 +110,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
-        
-        return annotationView
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print(view.annotation!.title!!)
     }
 }
 
