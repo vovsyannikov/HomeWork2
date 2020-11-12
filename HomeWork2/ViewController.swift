@@ -236,7 +236,7 @@ class ViewController: UIViewController  {
                     
                     for (k, v) in data {
                         if k as? String == "items" {
-                            for (i, el) in (v as! Array<Int>).enumerated() {
+                            for (i, _) in (v as! Array<Int>).enumerated() {
                                 self.friends.append(Friend(indexed: i+1))
                             }
                         }
@@ -252,7 +252,6 @@ class ViewController: UIViewController  {
         let vkFriends = UIButton()
         let getFriends = UIAction{ _ in
             getVKFriends()
-            // Раскоментить, когда будет смысл в переходе на другой экран
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.performSegue(withIdentifier: "FriendsList", sender: self)
             }
