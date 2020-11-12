@@ -16,6 +16,7 @@
 		3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */; };
 		3CAE2381255D44EF00DC4624 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE2380255D44EF00DC4624 /* GoogleMapsViewController.swift */; };
 		3CAE2384255D44FC00DC4624 /* YandexMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE2383255D44FC00DC4624 /* YandexMapsViewController.swift */; };
+		3CAE2387255D4FC500DC4624 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE2386255D4FC500DC4624 /* LocationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3C11B66A252E4361004F8B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CAE2380255D44EF00DC4624 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		3CAE2383255D44FC00DC4624 /* YandexMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMapsViewController.swift; sourceTree = "<group>"; };
+		3CAE2386255D4FC500DC4624 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		D2BE5B4F7C401C5F9AE97D88 /* Pods_HomeWork2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeWork2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B49CAE4D7E9C9AFD8D9CF8 /* Pods-HomeWork2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeWork2.debug.xcconfig"; path = "Target Support Files/Pods-HomeWork2/Pods-HomeWork2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				3CAE2380255D44EF00DC4624 /* GoogleMapsViewController.swift */,
 				3CAE2383255D44FC00DC4624 /* YandexMapsViewController.swift */,
 				3C11B662252E435D004F8B15 /* Main.storyboard */,
+				3CAE2386255D4FC500DC4624 /* LocationData.swift */,
 				3C11B665252E4361004F8B15 /* Assets.xcassets */,
 				3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */,
 				3C11B66A252E4361004F8B15 /* Info.plist */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CAE2387255D4FC500DC4624 /* LocationData.swift in Sources */,
 				3C11B661252E435C004F8B15 /* ViewController.swift in Sources */,
 				3C11B65D252E435C004F8B15 /* AppDelegate.swift in Sources */,
 				3CAE2384255D44FC00DC4624 /* YandexMapsViewController.swift in Sources */,
