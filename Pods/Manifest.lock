@@ -1,0 +1,24 @@
+PODS:
+  - GoogleMaps (4.0.0):
+    - GoogleMaps/Maps (= 4.0.0)
+  - GoogleMaps/Base (4.0.0)
+  - GoogleMaps/Maps (4.0.0):
+    - GoogleMaps/Base
+  - YandexMapsMobile (4.0.0-full)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - YandexMapsMobile (= 4.0.0-full)
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+    - YandexMapsMobile
+
+SPEC CHECKSUMS:
+  GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
+  YandexMapsMobile: 0f3d8c92fad685dc33d07f83eed4eb0166089743
+
+PODFILE CHECKSUM: f011459b0eec8465b31268eb913b03dc05ad8da9
+
+COCOAPODS: 1.9.3
