@@ -91,7 +91,7 @@
                             <constraint firstItem="gk0-Zq-46e" firstAttribute="leading" secondItem="4nG-iZ-5Qn" secondAttribute="leading" id="wx0-v4-8v3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="yandex_logo_ru.png" id="1nB-aG-NYP"/>
+                    <tabBarItem key="tabBarItem" title="" image="y.circle.fill" catalog="system" id="1nB-aG-NYP"/>
                     <connections>
                         <outlet property="yandexMapView" destination="gk0-Zq-46e" id="wQe-mo-w7B"/>
                     </connections>
@@ -123,7 +123,7 @@
     <resources>
         <image name="applelogo" catalog="system" width="128" height="121"/>
         <image name="g.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="yandex_logo_ru.png" width="88" height="48"/>
+        <image name="y.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
