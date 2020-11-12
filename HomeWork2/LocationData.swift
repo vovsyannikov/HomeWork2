@@ -7,10 +7,20 @@
 
 import Foundation
 import CoreLocation
+import MapKit
+
+class Place: NSObject, MKAnnotation{
+    var title: String?
+    var coordinate: CLLocationCoordinate2D
+    init(title: String?, coordinate: CLLocationCoordinate2D){
+        self.coordinate = coordinate
+        self.title = title
+    }
+}
 
 class LocationData: NSObject {
     static let shared = LocationData()
-    var currentLocation: CLLocationCoordinate2D?
+    var currentLocation: CLLocationCoordinate2D? // Текущее положение пользователя
     
     typealias AccessRequestBlock = (Bool) -> ()
     typealias LocationRequestBlock = (CLLocationCoordinate2D?) -> ()
@@ -64,5 +74,24 @@ extension LocationData: CLLocationManagerDelegate{
         manager.stopUpdatingLocation()
         locationRequestCompletion?(nil)
         locationRequestCompletion = nil
+    }
+}
+
+extension CLAuthorizationStatus: CustomStringConvertible{
+    public var description: String {
+        switch self {
+        case .authorizedAlways:
+            return "Always authorized"
+        case .notDetermined:
+            return "Not determined"
+        case .restricted:
+            return "Restricted"
+        case .denied:
+            return "Denied"
+        case .authorizedWhenInUse:
+            return "Authorized when in use"
+        @unknown default:
+            return "Unknown"
+        }
     }
 }
