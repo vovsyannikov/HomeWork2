@@ -1,24 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fFF-pk-T6P">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Google Maps View Controller-->
+        <scene sceneID="SEk-IS-u1z">
+            <objects>
+                <viewController id="yGj-uI-y8d" customClass="GoogleMapsViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lYH-a4-pjZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cep-po-Lsx" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cGO-Yy-E6J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cep-po-Lsx" firstAttribute="leading" secondItem="cGO-Yy-E6J" secondAttribute="leading" id="3R0-7b-otg"/>
+                            <constraint firstItem="cGO-Yy-E6J" firstAttribute="trailing" secondItem="Cep-po-Lsx" secondAttribute="trailing" id="AFz-lp-U0R"/>
+                            <constraint firstItem="Cep-po-Lsx" firstAttribute="top" secondItem="lYH-a4-pjZ" secondAttribute="firstBaseline" id="baG-Jt-3k6"/>
+                            <constraint firstItem="cGO-Yy-E6J" firstAttribute="bottom" secondItem="Cep-po-Lsx" secondAttribute="bottom" id="dzL-UT-Bv3"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="g.circle.fill" catalog="system" id="ooh-Kg-Daj"/>
+                    <connections>
+                        <outlet property="googleMapView" destination="Cep-po-Lsx" id="AgB-V6-BRW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mxu-6f-ZBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909" y="-569"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-KY-fWc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Glo-KY-fWc" secondAttribute="trailing" id="AfE-N7-f4Q"/>
+                            <constraint firstItem="Glo-KY-fWc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IcJ-cK-1Do"/>
+                            <constraint firstItem="Glo-KY-fWc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="firstBaseline" id="dX9-QZ-VVT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Glo-KY-fWc" secondAttribute="bottom" id="kl5-Xh-fys"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="applelogo" catalog="system" id="rr2-ou-PrY"/>
+                    <connections>
+                        <outlet property="appleMapView" destination="Glo-KY-fWc" id="eoe-99-Ii9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="908.69565217391312" y="138.61607142857142"/>
+        </scene>
+        <!--Yandex Maps View Controller-->
+        <scene sceneID="8CG-Jy-bgz">
+            <objects>
+                <viewController id="ZCg-FF-Bni" customClass="YandexMapsViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oWu-nV-ruz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gk0-Zq-46e" customClass="YMKMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4nG-iZ-5Qn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4nG-iZ-5Qn" firstAttribute="bottom" secondItem="gk0-Zq-46e" secondAttribute="bottom" id="IZx-d4-CTg"/>
+                            <constraint firstItem="gk0-Zq-46e" firstAttribute="top" secondItem="oWu-nV-ruz" secondAttribute="top" id="ToN-TK-Sky"/>
+                            <constraint firstItem="4nG-iZ-5Qn" firstAttribute="trailing" secondItem="gk0-Zq-46e" secondAttribute="trailing" id="rop-We-HMH"/>
+                            <constraint firstItem="gk0-Zq-46e" firstAttribute="leading" secondItem="4nG-iZ-5Qn" secondAttribute="leading" id="wx0-v4-8v3"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="yandex_logo_ru.png" id="1nB-aG-NYP"/>
+                    <connections>
+                        <outlet property="yandexMapView" destination="gk0-Zq-46e" id="wQe-mo-w7B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqw-nZ-mmd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909" y="894"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="nwG-Gd-uEb">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="fFF-pk-T6P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tNb-4K-amp">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="CvK-z3-aSn"/>
+                        <segue destination="yGj-uI-y8d" kind="relationship" relationship="viewControllers" id="a3q-s5-4o3"/>
+                        <segue destination="ZCg-FF-Bni" kind="relationship" relationship="viewControllers" id="A3l-cu-mBG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Us2-7K-SCl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1.4492753623188408" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="applelogo" catalog="system" width="128" height="121"/>
+        <image name="g.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="yandex_logo_ru.png" width="88" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

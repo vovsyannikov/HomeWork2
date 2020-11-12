@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import MapKit
+import GoogleMaps
+import YandexMapsMobile
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var appleMapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
 
