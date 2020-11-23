@@ -75,29 +75,31 @@ class GoogleMapsViewController: UIViewController {
                 addMarkers()
             }
             let poiCenter = findPOICenter()
-            googleMapView.camera = GMSCameraPosition(target: poiCenter, zoom: 20)
+            googleMapView.camera = GMSCameraPosition(target: poiCenter, zoom: 13)
         }
         
         return action
     }
     func zoomIn() -> UIAction {
         let action = UIAction{ [unowned self] _ in
-            googleMapView.animate(toZoom: googleMapView.camera.zoom * 5)
-            
+            googleMapView.animate(toZoom: googleMapView.camera.zoom + 1)
         }
         
         return action
     }
     func zoomOut() -> UIAction{
         let action = UIAction{ [unowned self] _ in
-            googleMapView.animate(toZoom: googleMapView.camera.zoom / 5)
+            googleMapView.animate(toZoom: googleMapView.camera.zoom - 1)
         }
         
         return action
     }
     func centerOnUser() -> UIAction{
         let action = UIAction{ [unowned self] _ in
-            
+            if googleMapView.myLocation != nil {
+                let cameraOnUser = GMSCameraPosition(target: googleMapView.myLocation!.coordinate, zoom: 17)
+                googleMapView.animate(to: cameraOnUser)
+            }
         }
         
         return action
@@ -116,7 +118,7 @@ class GoogleMapsViewController: UIViewController {
         let lm = LocationData.shared
         if lm.currentLocation != nil {
             googleMapView.isMyLocationEnabled = true
-            googleMapView.camera = GMSCameraPosition(target: lm.currentLocation!, zoom: 10)
+            googleMapView.camera = GMSCameraPosition(target: lm.currentLocation!, zoom: 17)
         }
     }
     
