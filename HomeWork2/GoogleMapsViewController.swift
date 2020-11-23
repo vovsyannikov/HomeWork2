@@ -15,17 +15,24 @@ class GoogleMapsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        centerOnUser()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let lm = LocationData.shared
-        
-        if lm.currentLocation != nil {
-            
-        }
+        getCurrentPosition()
     }
 
+    func centerOnUser(){
+        let lm = LocationData.shared
+        if lm.currentLocation != nil {
+            googleMapView.isMyLocationEnabled = true
+            googleMapView.camera = GMSCameraPosition(target: lm.currentLocation!, zoom: 5)
+        }
+    }
+    
 }
+
+

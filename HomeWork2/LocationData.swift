@@ -17,6 +17,18 @@ let places: [Place] = [
     Place(title: "Большой Театр", coordinate: CLLocationCoordinate2D(latitude: 55.759936, longitude: 37.618677))
 ]
 
+func getCurrentPosition(){
+    // Запрос разрешения геопозиции
+    LocationData.shared.requestAccess { (succeeded) in
+        if succeeded {
+            // Если разрешение получено, то запросить геопозицию
+            LocationData.shared.getLocation { (location) in
+                print(location!)
+            }
+        }
+    }
+}
+
 public func createButtons(completion: (UIStackView) -> ()){
     let poiButton = UIButton()
     let zoomInButton = UIButton()

@@ -37,9 +37,20 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        startUp()
+    }
+    
+    func startUp(){
+        
         getCurrentPosition()
         
+        let lm = LocationData.shared
+        if lm.currentLocation != nil {
+            appleMapView.setCenter(lm.currentLocation!, animated: true)
+            appleMapView.camera.altitude = 2_000
+        }
     }
+    
     func createCamera(forLocation loc: CLLocationCoordinate2D) -> MKMapCamera {
         // Creating camera that looks at the location
         let camera = MKMapCamera(lookingAtCenter: loc, fromDistance: 2_000, pitch: 0, heading: appleMapView.camera.heading)
@@ -98,21 +109,7 @@ class ViewController: UIViewController {
         
         return poiZoomAction
     }
-    func getCurrentPosition(){
-        let lm = LocationData.shared
-        // Запрос разрешения геопозиции
-        lm.requestAccess { [unowned self] (successeded) in
-            if successeded {
-                // Если разрешение получено, то запросить геопозицию
-                lm.getLocation { [unowned self] (location) in
-                    print(location!)
-                    appleMapView.setCenter(location!, animated: true)
-                    appleMapView.camera.altitude = 2_000
-                    
-                }
-            }
-        }
-    }
+    
 }
 
 extension ViewController: MKMapViewDelegate{
