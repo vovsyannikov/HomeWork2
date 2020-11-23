@@ -22,9 +22,10 @@ class ViewController: UIViewController {
             for el in vStack.arrangedSubviews {
                 let btn = el as! UIButton
                 switch btn.tag {
-                case 10: btn.addAction(zoomIn(), for: .touchUpInside)
-                case 20: btn.addAction(zoomOut(), for: .touchUpInside)
-                case 30: btn.addAction(centerOnUser()!, for: .touchUpInside)
+                case 10: btn.addAction(poiZoom(), for: .touchUpInside)
+                case 20: btn.addAction(zoomIn(), for: .touchUpInside)
+                case 30: btn.addAction(zoomOut(), for: .touchUpInside)
+                case 40: btn.addAction(centerOnUser(), for: .touchUpInside)
                 default: break
                 }
             }
@@ -36,17 +37,22 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        createAnnotations()
         getCurrentPosition()
         
     }
-    
+    func createCamera(forLocation loc: CLLocationCoordinate2D) -> MKMapCamera {
+        // Creating camera that looks at the location
+        let camera = MKMapCamera(lookingAtCenter: loc, fromDistance: 2_000, pitch: 0, heading: appleMapView.camera.heading)
+        
+        return camera
+    }
     func zoomIn() -> UIAction{
         let zoomInAction = UIAction{ [unowned self] _ in
             print("Zooming in")
             
             // Creating camera that is twice as far as current one
-            let camera: MKMapCamera = .init(lookingAtCenter: appleMapView.centerCoordinate, fromDistance: appleMapView.camera.altitude / 2, pitch: 0, heading: appleMapView.camera.heading)
+            let camera = createCamera(forLocation: appleMapView.centerCoordinate)
+            camera.centerCoordinateDistance = appleMapView.camera.altitude / 2
             
             // Zooming map
             appleMapView.setCamera(camera, animated: true)
@@ -60,7 +66,8 @@ class ViewController: UIViewController {
             print("Zooming out")
             
             // Creating camera that is twice as close as current one
-            let camera: MKMapCamera = .init(lookingAtCenter: appleMapView.centerCoordinate, fromDistance: appleMapView.camera.altitude * 2, pitch: 0, heading: appleMapView.camera.heading)
+            let camera = createCamera(forLocation: appleMapView.centerCoordinate)
+            camera.centerCoordinateDistance = appleMapView.camera.altitude * 2
             
             // Zooming map
             appleMapView.setCamera(camera, animated: true)
@@ -68,13 +75,12 @@ class ViewController: UIViewController {
         
         return zoomOutAction
     }
-    func centerOnUser() -> UIAction? {
+    func centerOnUser() -> UIAction {
         let centerOnUserAction = UIAction { [unowned self] _ in
             let lm = LocationData.shared
             guard let currentLoc = lm.currentLocation else { return }
             
-            // Creating camera that looks at the user
-            let camera = MKMapCamera(lookingAtCenter: currentLoc, fromDistance: 2_000, pitch: 0, heading: appleMapView.camera.heading)
+            let camera = createCamera(forLocation: currentLoc)
             
             // Moving camera
             appleMapView.setCamera(camera, animated: true)
@@ -82,27 +88,27 @@ class ViewController: UIViewController {
         
         return centerOnUserAction
     }
-    func createAnnotations(){
-        let places: [Place] = [
-            Place(title: "Красная площадь", coordinate: CLLocationCoordinate2D(latitude: 55.754012, longitude: 37.620537)),
-            Place(title: "Парк Горького", coordinate: CLLocationCoordinate2D(latitude: 55.727029, longitude: 37.599901)),
-            Place(title: "Парк Зарядье", coordinate: CLLocationCoordinate2D(latitude: 55.751018, longitude: 37.628694)),
-            Place(title: "Храм Христа Спасителя", coordinate: CLLocationCoordinate2D(latitude: 55.744288, longitude: 37.605189)),
-            Place(title: "Большой Театр", coordinate: CLLocationCoordinate2D(latitude: 55.759936, longitude: 37.618677))
-        ]
+    func poiZoom() -> UIAction{
+        let poiZoomAction = UIAction { [unowned self] _ in
+            if appleMapView.annotations.isEmpty {
+                appleMapView.addAnnotations(places)
+            }
+            appleMapView.showAnnotations(places, animated: true)
+        }
         
-        appleMapView.addAnnotations(places)
-        appleMapView.showAnnotations(places, animated: true)
-        print(appleMapView.camera.altitude)
+        return poiZoomAction
     }
     func getCurrentPosition(){
         let lm = LocationData.shared
         // Запрос разрешения геопозиции
-        lm.requestAccess { (successeded) in
+        lm.requestAccess { [unowned self] (successeded) in
             if successeded {
                 // Если разрешение получено, то запросить геопозицию
-                lm.getLocation { (location) in
+                lm.getLocation { [unowned self] (location) in
                     print(location!)
+                    appleMapView.setCenter(location!, animated: true)
+                    appleMapView.camera.altitude = 2_000
+                    
                 }
             }
         }

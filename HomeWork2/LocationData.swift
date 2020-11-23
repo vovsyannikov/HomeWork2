@@ -9,13 +9,22 @@ import Foundation
 import CoreLocation
 import MapKit
 
+let places: [Place] = [
+    Place(title: "Красная площадь", coordinate: CLLocationCoordinate2D(latitude: 55.754012, longitude: 37.620537)),
+    Place(title: "Парк Горького", coordinate: CLLocationCoordinate2D(latitude: 55.727029, longitude: 37.599901)),
+    Place(title: "Парк Зарядье", coordinate: CLLocationCoordinate2D(latitude: 55.751018, longitude: 37.628694)),
+    Place(title: "Храм Христа Спасителя", coordinate: CLLocationCoordinate2D(latitude: 55.744288, longitude: 37.605189)),
+    Place(title: "Большой Театр", coordinate: CLLocationCoordinate2D(latitude: 55.759936, longitude: 37.618677))
+]
+
 public func createButtons(completion: (UIStackView) -> ()){
+    let poiButton = UIButton()
     let zoomInButton = UIButton()
     let zoomOutButton = UIButton()
     let centerButton = UIButton()
     let vStack = UIStackView()
     
-    vStack.frame = CGRect(x: 0, y: 0, width: 50, height: 160)
+    vStack.frame = CGRect(x: 0, y: 0, width: 50, height: 200)
     
     vStack.axis = .vertical
     vStack.distribution = .fillEqually
@@ -23,13 +32,16 @@ public func createButtons(completion: (UIStackView) -> ()){
     
     zoomInButton.setImage(UIImage(systemName: "plus"), for: .normal)
     zoomOutButton.setImage(UIImage(systemName: "minus"), for: .normal)
+    poiButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
     centerButton.setImage(UIImage(systemName: "arrowtriangle.up"), for: .normal)
     centerButton.transform = CGAffineTransform(rotationAngle: -(.pi/4))
-    zoomInButton.tag = 10
-    zoomOutButton.tag = 20
-    centerButton.tag = 30
     
-    for btn in [zoomInButton, zoomOutButton, centerButton] {
+    poiButton.tag = 10
+    zoomInButton.tag = 20
+    zoomOutButton.tag = 30
+    centerButton.tag = 40
+    
+    for btn in [poiButton, zoomInButton, zoomOutButton, centerButton] {
         btn.backgroundColor = .systemGray4
         btn.imageView?.tintColor = .black
         btn.layer.cornerRadius = vStack.frame.width/2
