@@ -17,6 +17,30 @@ let places: [Place] = [
     Place(title: "Большой Театр", coordinate: CLLocationCoordinate2D(latitude: 55.759936, longitude: 37.618677))
 ]
 
+func findPOICenter() -> CLLocationCoordinate2D {
+    var leftmostPoint: CLLocationDegrees = places[0].coordinate.latitude
+    var rightmostPoint: CLLocationDegrees = places[0].coordinate.latitude
+    var topPoint: CLLocationDegrees = places[0].coordinate.longitude
+    var bottomPoint: CLLocationDegrees = places[0].coordinate.longitude
+    
+    for place in places {
+        if place.coordinate.latitude < leftmostPoint {
+            leftmostPoint = place.coordinate.latitude
+        }
+        if place.coordinate.latitude > rightmostPoint {
+            rightmostPoint = place.coordinate.latitude
+        }
+        if place.coordinate.longitude > topPoint {
+            topPoint = place.coordinate.longitude
+        }
+        if place.coordinate.longitude < bottomPoint {
+            bottomPoint = place.coordinate.longitude
+        }
+    }
+    
+    return CLLocationCoordinate2D(latitude: (leftmostPoint + rightmostPoint)/2, longitude: (topPoint + bottomPoint)/2 )
+}
+
 func getCurrentPosition(){
     // Запрос разрешения геопозиции
     LocationData.shared.requestAccess { (succeeded) in

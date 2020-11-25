@@ -29,14 +29,17 @@ class YandexMapsViewController: UIViewController {
                 }
             }
 
-            
             view.addSubview(buttonStack)
         }
     }
     
     func YcenterOnPOI() -> UIAction{
         let action = UIAction { [unowned self] _ in
+            let poiCenter = findPOICenter()
+            var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
+            cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: poiCenter.latitude, longitude: poiCenter.longitude), zoom: 10, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
             
+            moveYMKCamera(to: cameraPosition)
         }
         
         return action
@@ -75,10 +78,12 @@ class YandexMapsViewController: UIViewController {
         
         return action
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         startUp()
+        createPlacemarks()
     }
     
     func moveYMKCamera(to postition: YMKCameraPosition, duration: Float = 2){
@@ -109,6 +114,16 @@ class YandexMapsViewController: UIViewController {
                 anchorCourse: CGPoint(x: 0.5 * yandexMapView.frame.size.width * scale, y: 0.83 * yandexMapView.frame.size.height * scale))
             userLocationLayer.setObjectListenerWith(self)
         }
+        
+    }
+    
+    func createPlacemarks(){
+        let mapObjects = yandexMapView.mapWindow.map.mapObjects
+        var yPoints: [YMKPoint] = []
+        for place in places {
+            mapObjects.addPlacemark(with: YMKPoint(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude), image: UIImage(systemName: "mappin.circle.fill")!)
+        }
+        
     }
 
 }
