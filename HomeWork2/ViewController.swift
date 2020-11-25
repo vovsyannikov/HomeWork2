@@ -22,10 +22,10 @@ class ViewController: UIViewController {
             for el in vStack.arrangedSubviews {
                 let btn = el as! UIButton
                 switch btn.tag {
-                case 10: btn.addAction(poiZoom(), for: .touchUpInside)
-                case 20: btn.addAction(zoomIn(), for: .touchUpInside)
-                case 30: btn.addAction(zoomOut(), for: .touchUpInside)
-                case 40: btn.addAction(centerOnUser(), for: .touchUpInside)
+                case 10: btn.addAction(AcenterOnPOI(), for: .touchUpInside)
+                case 20: btn.addAction(AzoomIn(), for: .touchUpInside)
+                case 30: btn.addAction(AzoomOut(), for: .touchUpInside)
+                case 40: btn.addAction(AcenterOnUser(), for: .touchUpInside)
                 default: break
                 }
             }
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         return camera
     }
-    func zoomIn() -> UIAction{
+    func AzoomIn() -> UIAction{
         let zoomInAction = UIAction{ [unowned self] _ in
             print("Zooming in")
             
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         
         return zoomInAction
     }
-    func zoomOut() -> UIAction{
+    func AzoomOut() -> UIAction{
         let zoomOutAction = UIAction{ [unowned self] _ in
             print("Zooming out")
             
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         
         return zoomOutAction
     }
-    func centerOnUser() -> UIAction {
+    func AcenterOnUser() -> UIAction {
         let centerOnUserAction = UIAction { [unowned self] _ in
             let lm = LocationData.shared
             guard let currentLoc = lm.currentLocation else { return }
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         
         return centerOnUserAction
     }
-    func poiZoom() -> UIAction{
+    func AcenterOnPOI() -> UIAction{
         let poiZoomAction = UIAction { [unowned self] _ in
             if appleMapView.annotations.isEmpty {
                 appleMapView.addAnnotations(places)

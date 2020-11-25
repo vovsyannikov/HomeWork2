@@ -22,10 +22,10 @@ class GoogleMapsViewController: UIViewController {
             for el in buttonStack.arrangedSubviews {
                 let btn = el as! UIButton
                 switch btn.tag {
-                case 10: btn.addAction(poiZoom(), for: .touchUpInside)
-                case 20: btn.addAction(zoomIn(), for: .touchUpInside)
-                case 30: btn.addAction(zoomOut(), for: .touchUpInside)
-                case 40: btn.addAction(centerOnUser(), for: .touchUpInside)
+                case 10: btn.addAction(GcenterOnPOI(), for: .touchUpInside)
+                case 20: btn.addAction(GzoomIn(), for: .touchUpInside)
+                case 30: btn.addAction(GzoomOut(), for: .touchUpInside)
+                case 40: btn.addAction(GcenterOnUser(), for: .touchUpInside)
                 default: break
                 }
             }
@@ -68,7 +68,7 @@ class GoogleMapsViewController: UIViewController {
         
         return CLLocationCoordinate2D(latitude: (leftmostPoint + rightmostPoint)/2, longitude: (topPoint + bottomPoint)/2 )
     }
-    func poiZoom() -> UIAction{
+    func GcenterOnPOI() -> UIAction{
         
         let action = UIAction{ [unowned self] _ in
             if markers.isEmpty {
@@ -80,21 +80,21 @@ class GoogleMapsViewController: UIViewController {
         
         return action
     }
-    func zoomIn() -> UIAction {
+    func GzoomIn() -> UIAction {
         let action = UIAction{ [unowned self] _ in
             googleMapView.animate(toZoom: googleMapView.camera.zoom + 1)
         }
         
         return action
     }
-    func zoomOut() -> UIAction{
+    func GzoomOut() -> UIAction{
         let action = UIAction{ [unowned self] _ in
             googleMapView.animate(toZoom: googleMapView.camera.zoom - 1)
         }
         
         return action
     }
-    func centerOnUser() -> UIAction{
+    func GcenterOnUser() -> UIAction{
         let action = UIAction{ [unowned self] _ in
             if googleMapView.myLocation != nil {
                 let cameraOnUser = GMSCameraPosition(target: googleMapView.myLocation!.coordinate, zoom: 17)
@@ -126,6 +126,7 @@ class GoogleMapsViewController: UIViewController {
 
 extension GoogleMapsViewController: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        // Вывод названия маркера в консоль. Ломает вывод на экран
         print(marker.title)
         return true
     }

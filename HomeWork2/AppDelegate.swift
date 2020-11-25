@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import YandexMapsMobile
+import YandexMapKit
 import GoogleMaps
 
 @main

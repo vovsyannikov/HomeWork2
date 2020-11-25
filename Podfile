@@ -7,6 +7,6 @@ target 'HomeWork2' do
 
   # Pods for HomeWork2
   pod 'GoogleMaps'
-  pod 'YandexMapsMobile', ’4.0.0-full’
+  pod 'YandexMapKit'
 
 end
