@@ -43,21 +43,34 @@ class YandexMapsViewController: UIViewController {
     }
     func YzoomIn() -> UIAction{
         let action = UIAction { [unowned self] _ in
+            var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
+            cameraPosition = YMKCameraPosition(target: cameraPosition.target, zoom: cameraPosition.zoom + 1, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
             
+            moveYMKCamera(to: cameraPosition, duration: 0.3)
         }
         
         return action
     }
     func YzoomOut() -> UIAction{
         let action = UIAction { [unowned self] _ in
+            var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
+            cameraPosition = YMKCameraPosition(target: cameraPosition.target, zoom: cameraPosition.zoom - 1, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
             
+            moveYMKCamera(to: cameraPosition, duration: 0.3)
         }
         
         return action
     }
     func YcenterOnUser() -> UIAction{
         let action = UIAction { [unowned self] _ in
-            
+            let lm = LocationData.shared
+            if lm.currentLocation != nil {
+                let userPoint = YMKPoint(latitude: lm.currentLocation!.latitude, longitude: lm.currentLocation!.longitude)
+                var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
+                cameraPosition = YMKCameraPosition(target: userPoint, zoom: 25, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
+                
+                moveYMKCamera(to: cameraPosition)
+            }
         }
         
         return action
@@ -68,18 +81,22 @@ class YandexMapsViewController: UIViewController {
         startUp()
     }
     
+    func moveYMKCamera(to postition: YMKCameraPosition, duration: Float = 2){
+        yandexMapView.mapWindow.map.move (
+            with: postition,
+            animationType: YMKAnimation(type: .smooth, duration: duration),
+            cameraCallback: nil
+        )
+    }
+    
     func startUp(){
         getCurrentPosition()
         
         let lm = LocationData.shared
         if lm.currentLocation != nil {
             let point = YMKPoint(latitude: lm.currentLocation!.latitude, longitude: lm.currentLocation!.longitude)
+            moveYMKCamera(to: YMKCameraPosition(target: point, zoom: 25, azimuth: 0, tilt: 0))
             
-            yandexMapView.mapWindow.map.move (
-                with: YMKCameraPosition(target: point, zoom: 15, azimuth: 0, tilt: 0),
-                animationType: YMKAnimation(type: .smooth, duration: 5),
-                cameraCallback: nil
-            )
             
             let scale = UIScreen.main.scale
             let mapKit = YMKMapKit.sharedInstance()

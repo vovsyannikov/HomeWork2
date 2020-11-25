@@ -4,21 +4,25 @@ PODS:
   - GoogleMaps/Base (4.0.0)
   - GoogleMaps/Maps (4.0.0):
     - GoogleMaps/Base
-  - YandexMapsMobile (4.0.0-full)
+  - YandexMapKit (3.5.0):
+    - YandexRuntime (= 3.5.0)
+  - YandexRuntime (3.5.0)
 
 DEPENDENCIES:
   - GoogleMaps
-  - YandexMapsMobile (= 4.0.0-full)
+  - YandexMapKit
 
 SPEC REPOS:
   trunk:
     - GoogleMaps
-    - YandexMapsMobile
+    - YandexMapKit
+    - YandexRuntime
 
 SPEC CHECKSUMS:
   GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
-  YandexMapsMobile: 0f3d8c92fad685dc33d07f83eed4eb0166089743
+  YandexMapKit: ecd4b78de34a35df63d066ac299e6fd0fe46d1ba
+  YandexRuntime: 2d55244d06267106cf9b00c25a1e63f72a73b6fd
 
-PODFILE CHECKSUM: f011459b0eec8465b31268eb913b03dc05ad8da9
+PODFILE CHECKSUM: faa2992bab7ececd38e63e2b724a5092262488c1
 
 COCOAPODS: 1.9.3
