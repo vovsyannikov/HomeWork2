@@ -7,10 +7,12 @@
 
 import UIKit
 import YandexMapKit
+import MapKit
 
 class YandexMapsViewController: UIViewController {
 
     @IBOutlet weak var yandexMapView: YMKMapView!
+    var objects: [(point: YMKPoint, object: YMKMapObject)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,7 @@ class YandexMapsViewController: UIViewController {
         let action = UIAction { [unowned self] _ in
             let poiCenter = findPOICenter()
             var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
-            cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: poiCenter.latitude, longitude: poiCenter.longitude), zoom: 10, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
+            cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: poiCenter.latitude, longitude: poiCenter.longitude), zoom: 13, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
             
             moveYMKCamera(to: cameraPosition)
         }
@@ -70,7 +72,7 @@ class YandexMapsViewController: UIViewController {
             if lm.currentLocation != nil {
                 let userPoint = YMKPoint(latitude: lm.currentLocation!.latitude, longitude: lm.currentLocation!.longitude)
                 var cameraPosition = yandexMapView.mapWindow.map.cameraPosition
-                cameraPosition = YMKCameraPosition(target: userPoint, zoom: 25, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
+                cameraPosition = YMKCameraPosition(target: userPoint, zoom: 18, azimuth: cameraPosition.azimuth, tilt: cameraPosition.tilt)
                 
                 moveYMKCamera(to: cameraPosition)
             }
@@ -100,7 +102,7 @@ class YandexMapsViewController: UIViewController {
         let lm = LocationData.shared
         if lm.currentLocation != nil {
             let point = YMKPoint(latitude: lm.currentLocation!.latitude, longitude: lm.currentLocation!.longitude)
-            moveYMKCamera(to: YMKCameraPosition(target: point, zoom: 25, azimuth: 0, tilt: 0))
+            moveYMKCamera(to: YMKCameraPosition(target: point, zoom: 18, azimuth: 0, tilt: 0))
             
             
             let scale = UIScreen.main.scale
@@ -119,11 +121,14 @@ class YandexMapsViewController: UIViewController {
     
     func createPlacemarks(){
         let mapObjects = yandexMapView.mapWindow.map.mapObjects
-        var yPoints: [YMKPoint] = []
         for place in places {
-            mapObjects.addPlacemark(with: YMKPoint(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude), image: UIImage(systemName: "mappin.circle.fill")!)
+            let point = YMKPoint(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            
+            let ob = mapObjects.addPlacemark(with: point, image: UIImage(systemName: "mappin.circle.fill")!)
+            
+            objects.append((point: point, object: ob))
         }
-        
+        mapObjects.addTapListener(with: self)
     }
 
 }
@@ -134,7 +139,6 @@ extension YandexMapsViewController: YMKUserLocationObjectListener{
         
         let pinPlacemark = view.pin.useCompositeIcon()
         let userLocationImage = UIImage(systemName: "circle.fill")!.withTintColor(.systemRed)
-        print(userLocationImage)
         
         pinPlacemark.setIconWithName(
             "pin",
@@ -158,14 +162,20 @@ extension YandexMapsViewController: YMKUserLocationObjectListener{
     
     
 }
-extension YandexMapsViewController: YMKLocationDelegate{
-    func onLocationUpdated(with location: YMKLocation) {
-        print(location)
+extension YandexMapsViewController: YMKMapObjectTapListener{
+    func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
+        for (p, object) in objects {
+            if object == mapObject{
+                for place in places {
+                    if place.coordinate.latitude == p.latitude
+                        && place.coordinate.longitude == p.longitude {
+                        print(place.title!)
+                    }
+                }
+            }
+        }
+        
+        return true
     }
-    
-    func onLocationStatusUpdated(with status: YMKLocationStatus) {
-        print(status)
-    }
-    
-    
 }
+
