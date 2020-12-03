@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     private let videoDataOutput = AVCaptureVideoDataOutput()
     private var faceLayers = [CAShapeLayer]()
     
-    // MARK: Standart Funcs
+    // MARK: Standard Funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         videoConnection?.videoOrientation = .portrait
     }
     
+    /// Handling Vision observations to detect faces in view
     private func handleFaceDetectionObservations(_ observations: [VNFaceObservation]) {
         for observation in observations {
             let faceRectConverted = self.previewLayer.layerRectConverted(fromMetadataOutputRect: observation.boundingBox)
@@ -79,6 +80,8 @@ class ViewController: UIViewController {
 
 // MARK: - AVCapture Extension
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    /// Creating capture output to make observations
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
