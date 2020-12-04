@@ -54,15 +54,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cJZ-WK-Ooc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dI-JW-OC9">
-                                <rect key="frame" x="30" y="583" width="354" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Mkt-hv-52l"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="1xs-1R-fXd" kind="embed" id="vlj-WY-eL6"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDm-US-mC7">
                                 <rect key="frame" x="30" y="74" width="354" height="50"/>
                                 <subviews>
@@ -82,26 +73,91 @@
                                     <constraint firstAttribute="height" constant="50" id="p9t-7B-BLH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGz-Fc-R8x">
+                                <rect key="frame" x="30" y="643" width="354" height="140"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U5W-ry-btU" userLabel="All Controls Stack">
+                                        <rect key="frame" x="15" y="15" width="324" height="110"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="edF-UZ-Z1W" userLabel="Floor Stack">
+                                                <rect key="frame" x="0.0" y="0.0" width="324" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Этаж #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBw-gX-krc" userLabel="Этаж #">
+                                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UfA-DT-aVE">
+                                                        <rect key="frame" x="162.5" y="0.0" width="163.5" height="31"/>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Z2x-EO-Qae" userLabel="Room Area Stack">
+                                                <rect key="frame" x="0.0" y="40" width="324" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Площадь: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-T5-8Kv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-oN-x6t">
+                                                        <rect key="frame" x="162.5" y="0.0" width="163.5" height="31"/>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dmK-Qs-TP2" userLabel="Room Count Stack">
+                                                <rect key="frame" x="0.0" y="80" width="324" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# комнат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM6-91-Ud6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bbj-uQ-SXr">
+                                                        <rect key="frame" x="162.5" y="0.0" width="163.5" height="31"/>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="U5W-ry-btU" firstAttribute="top" secondItem="HGz-Fc-R8x" secondAttribute="top" constant="15" id="Re4-Og-E32"/>
+                                    <constraint firstItem="U5W-ry-btU" firstAttribute="leading" secondItem="HGz-Fc-R8x" secondAttribute="leading" constant="15" id="XFl-32-XKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="U5W-ry-btU" secondAttribute="trailing" constant="15" id="Xz5-JI-b8t"/>
+                                    <constraint firstAttribute="bottom" secondItem="U5W-ry-btU" secondAttribute="bottom" constant="15" id="yC6-SY-CZy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wYd-JS-2MD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wYd-JS-2MD" firstAttribute="trailing" secondItem="7dI-JW-OC9" secondAttribute="trailing" constant="30" id="BBS-01-9Ed"/>
                             <constraint firstAttribute="bottom" secondItem="cJZ-WK-Ooc" secondAttribute="bottom" id="Bmt-16-xgh"/>
                             <constraint firstItem="cJZ-WK-Ooc" firstAttribute="top" secondItem="fgP-Pw-8Ih" secondAttribute="top" id="QsN-VB-exB"/>
-                            <constraint firstItem="7dI-JW-OC9" firstAttribute="centerX" secondItem="fgP-Pw-8Ih" secondAttribute="centerX" id="R2v-jg-X97"/>
-                            <constraint firstItem="7dI-JW-OC9" firstAttribute="leading" secondItem="wYd-JS-2MD" secondAttribute="leading" constant="30" id="Vm7-UX-j5X"/>
-                            <constraint firstItem="wYd-JS-2MD" firstAttribute="bottom" secondItem="7dI-JW-OC9" secondAttribute="bottom" constant="30" id="Yhb-bV-7LF"/>
+                            <constraint firstItem="HGz-Fc-R8x" firstAttribute="leading" secondItem="wYd-JS-2MD" secondAttribute="leading" constant="30" id="V0L-jD-GFg"/>
+                            <constraint firstItem="wYd-JS-2MD" firstAttribute="trailing" secondItem="HGz-Fc-R8x" secondAttribute="trailing" constant="30" id="aP5-E5-fx2"/>
                             <constraint firstItem="cJZ-WK-Ooc" firstAttribute="leading" secondItem="wYd-JS-2MD" secondAttribute="leading" id="cCm-E1-47d"/>
                             <constraint firstItem="wYd-JS-2MD" firstAttribute="trailing" secondItem="QDm-US-mC7" secondAttribute="trailing" constant="30" id="cE1-xq-CWc"/>
                             <constraint firstItem="QDm-US-mC7" firstAttribute="top" secondItem="wYd-JS-2MD" secondAttribute="top" constant="30" id="iT7-6W-CEK"/>
                             <constraint firstItem="QDm-US-mC7" firstAttribute="leading" secondItem="wYd-JS-2MD" secondAttribute="leading" constant="30" id="ilE-fx-8uw"/>
+                            <constraint firstItem="wYd-JS-2MD" firstAttribute="bottom" secondItem="HGz-Fc-R8x" secondAttribute="bottom" constant="30" id="k5O-Po-i9J"/>
                             <constraint firstItem="wYd-JS-2MD" firstAttribute="trailing" secondItem="cJZ-WK-Ooc" secondAttribute="trailing" id="oi3-Tm-QfS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="uXE-cJ-Mkc"/>
                     <connections>
+                        <outlet property="areaLabel" destination="Gwe-T5-8Kv" id="qyw-MV-kw8"/>
+                        <outlet property="areaSlider" destination="XPs-oN-x6t" id="dak-7d-VJ7"/>
+                        <outlet property="bottomView" destination="HGz-Fc-R8x" id="FoP-HU-Tir"/>
+                        <outlet property="floorLabel" destination="uBw-gX-krc" id="fVS-D9-SD8"/>
+                        <outlet property="floorSlider" destination="UfA-DT-aVE" id="3YQ-vt-KFJ"/>
                         <outlet property="mapControlView" destination="cJZ-WK-Ooc" id="hOM-fZ-WXX"/>
+                        <outlet property="roomCountSlider" destination="bbj-uQ-SXr" id="1s8-E1-9Cz"/>
+                        <outlet property="roomLabel" destination="dM6-91-Ud6" id="01w-83-Wc0"/>
                         <outlet property="topView" destination="QDm-US-mC7" id="Faw-iN-HOG"/>
                         <outlet property="totalSumLabel" destination="Jod-DV-RIr" id="ZYI-iU-Ws5"/>
                     </connections>
@@ -109,84 +165,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivu-kh-ijM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="576.81159420289862" y="519.64285714285711"/>
-        </scene>
-        <!--Embedded Controls View Controller-->
-        <scene sceneID="9DV-RQ-xpT">
-            <objects>
-                <viewController id="1xs-1R-fXd" customClass="EmbeddedControlsViewController" customModule="HomeWork2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OVC-mR-EKk">
-                        <rect key="frame" x="0.0" y="0.0" width="354" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3U-3x-g37">
-                                <rect key="frame" x="15" y="49" width="324" height="146"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pwb-3q-7wT">
-                                        <rect key="frame" x="0.0" y="0.0" width="324" height="42"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Этаж #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTX-Pp-Tgj" userLabel="Этаж #">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="42"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dgn-c3-FRL">
-                                                <rect key="frame" x="162.5" y="0.0" width="163.5" height="43"/>
-                                            </slider>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nTl-Km-rco" userLabel="Room Area Stack">
-                                        <rect key="frame" x="0.0" y="52" width="324" height="42"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Площадь: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPh-Ci-4ig">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="42"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="syK-qq-7AL">
-                                                <rect key="frame" x="162.5" y="0.0" width="163.5" height="43"/>
-                                            </slider>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IbI-zW-QEy" userLabel="Room Count Stack">
-                                        <rect key="frame" x="0.0" y="104" width="324" height="42"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# комнат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7h-TE-D0I">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="42"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vfo-Wg-59T">
-                                                <rect key="frame" x="162.5" y="0.0" width="163.5" height="43"/>
-                                            </slider>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="VRA-Du-4Vl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="D3U-3x-g37" secondAttribute="trailing" constant="15" id="5FJ-US-F3k"/>
-                            <constraint firstItem="D3U-3x-g37" firstAttribute="top" secondItem="VRA-Du-4Vl" secondAttribute="top" constant="5" id="8ED-NR-21N"/>
-                            <constraint firstItem="VRA-Du-4Vl" firstAttribute="bottom" secondItem="D3U-3x-g37" secondAttribute="bottom" constant="5" id="CDU-Th-bLw"/>
-                            <constraint firstItem="D3U-3x-g37" firstAttribute="leading" secondItem="VRA-Du-4Vl" secondAttribute="leading" constant="15" id="gVB-4z-GQG"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="areaLabel" destination="qPh-Ci-4ig" id="hNw-Lg-K3X"/>
-                        <outlet property="areaSlider" destination="syK-qq-7AL" id="2oi-U1-RYG"/>
-                        <outlet property="floorLabel" destination="tTX-Pp-Tgj" id="Csf-EE-Myh"/>
-                        <outlet property="floorSlider" destination="Dgn-c3-FRL" id="jRT-ZR-uvb"/>
-                        <outlet property="roomCountSlider" destination="Vfo-Wg-59T" id="aSv-dQ-jUx"/>
-                        <outlet property="roomLabel" destination="u7h-TE-D0I" id="sSq-ds-4i4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nX3-0u-2AT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1295.6521739130435" y="691.74107142857144"/>
         </scene>
     </scenes>
     <resources>
