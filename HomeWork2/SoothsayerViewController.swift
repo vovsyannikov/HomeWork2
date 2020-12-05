@@ -11,8 +11,9 @@ import RxCocoa
 import MapKit
 
 class SoothsayerViewController: UIViewController {
-
+    
     private let disposeBag = DisposeBag()
+    private var apartment: Apartment! = nil
     
     @IBOutlet weak var topView: UIView!
     
@@ -24,14 +25,16 @@ class SoothsayerViewController: UIViewController {
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var floorSlider: UISlider!
     
-    @IBOutlet weak var roomLabel: UILabel!
-    @IBOutlet weak var roomCountSlider: UISlider!
-    
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var areaSlider: UISlider!
     
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var roomCountSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        apartment = Apartment(area: 60, floor: 4, rooms: 3, coordinates: CLLocationCoordinate2D(latitude: 55.606415, longitude: 37.600696))
         
         totalSumSetup()
         mapSetup()
@@ -41,23 +44,48 @@ class SoothsayerViewController: UIViewController {
         setUpArea()
         setUpRooms()
     }
-
+    
     /// Setting up total apartment sum
     func totalSumSetup(){
         topView.layer.cornerRadius = CGFloat(15)
         topView.backgroundColor = UIColor(white: 1, alpha: 0.75)
         
-        // TODO: Implement reactive text
-        totalSumLabel.text = "Конечная сумма"
+        apartment.cost.asObservable()
+            .subscribe { [unowned self] value in
+                self.totalSumLabel.text = value.element!.rubCurrency
+                print(value.element!.rubCurrency)
+            }
+            .disposed(by: disposeBag)
     }
     
     /// Centering map to be in view
     func mapSetup(){
-        
+        let tapRecognizer: UITapGestureRecognizer = .init(target: self, action: #selector(handleTap(_:)))
+        tapRecognizer.delegate = self
         let startCenter = CLLocationCoordinate2D(latitude: 55.603688, longitude: 37.621511)
-        let mapCamera = MKMapCamera(lookingAtCenter: startCenter, fromDistance: 200_000, pitch: 0, heading: mapControlView.camera.heading)
+        let mapCamera = MKMapCamera(lookingAtCenter: startCenter, fromDistance: 175_000, pitch: 0, heading: mapControlView.camera.heading)
         
         mapControlView.setCamera(mapCamera, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = apartment.coordinates
+        mapControlView.addAnnotation(annotation)
+        mapControlView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    /// Handling the search for place to evaluate
+    @objc func handleTap(_ sender: UILongPressGestureRecognizer) {
+        let locationTapped = sender.location(in: mapControlView)
+        let coordinate = mapControlView.convert(locationTapped, toCoordinateFrom: mapControlView)
+        let place = MKPointAnnotation()
+        place.coordinate = coordinate
+        
+        apartment.coordinates = place.coordinate
+        print("Adding location for \(place.coordinate)")
+        
+        let annotations = mapControlView.annotations
+        mapControlView.removeAnnotations(annotations)
+        
+        mapControlView.addAnnotation(place)
     }
     
     /// Bottom view setup
@@ -74,14 +102,16 @@ class SoothsayerViewController: UIViewController {
             floorValues.append(Float(value))
         }
         
-        floorSlider.setValue(floorValues[4], animated: true)
+        floorSlider.value = 15
         floorSlider.maximumValue = floorValues.max()!
         floorSlider.minimumValue = floorValues.min()!
         
         floorSlider.rx.value.asObservable()
-            .map{ Int($0)}
             .subscribe { [unowned self] value in
-                self.floorLabel.text = "\(value.element!) этаж"
+                let el = Int(value.element!)
+                print(el, apartment.floor)
+                self.apartment.floor = Float(el)
+                self.floorLabel.text = "\(el) этаж"
             }
             .disposed(by: disposeBag)
         
@@ -94,13 +124,14 @@ class SoothsayerViewController: UIViewController {
             areaValues.append(Float(value))
         }
         
-        areaSlider.setValue(areaValues[17], animated: true)
+        areaSlider.value = apartment.area
         areaSlider.minimumValue = areaValues.min()!
         areaSlider.maximumValue = areaValues.max()!
         
         areaSlider.rx.value.asObservable()
             .map{ Int($0) }
             .subscribe { [unowned self] value in
+                self.apartment.area = Float(value.element!)
                 self.areaLabel.attributedText = "Площадь: \(value.element!) м2".superscripted
             }
             .disposed(by: disposeBag)
@@ -111,22 +142,23 @@ class SoothsayerViewController: UIViewController {
     func setUpRooms() {
         let roomValues: [Float] = [1,2,3,4,5,6]
         
-        roomCountSlider.setValue(2, animated: true)
+        roomCountSlider.value = apartment.rooms
         roomCountSlider.maximumValue = roomValues.max()!
         roomCountSlider.minimumValue = roomValues.min()!
         
         roomCountSlider.rx.value.asObservable()
             .map{ Int($0) }
             .subscribe { [unowned self] value in
+                self.apartment.rooms = Float(value.element!)
                 self.roomLabel.text = "Комнат: \(value.element!)"
             }
             .disposed(by: disposeBag)
         
     }
-
+    
 }
 
-extension Int {
+extension Double {
     var separated: String { separate().string(for: self) ?? "" }
     var rubCurrency: String { "\(separated) ₽"}
     
@@ -146,10 +178,11 @@ extension String {
         let font: UIFont = UIFont(name: "Helvetica", size: 17)!
         let fontSuper: UIFont = UIFont(name: "Helvetica", size: 13)!
         let attributedString = NSMutableAttributedString(string: self, attributes: [.font: font])
-        attributedString.setAttributes([.font: fontSuper, .baselineOffset: 10], range: NSRange(location: self.count-1, length: 1))
+        attributedString.setAttributes([.font: fontSuper, .baselineOffset: 13], range: NSRange(location: self.count-1, length: 1))
         
         return attributedString
     }
 }
 
-
+extension SoothsayerViewController: UIGestureRecognizerDelegate { }
+extension SoothsayerViewController: MKMapViewDelegate { }
