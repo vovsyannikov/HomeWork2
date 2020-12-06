@@ -10,8 +10,8 @@ import RxSwift
 import CoreML
 import MapKit
 
-// FIXME: Model is getting stuff wrong!
-fileprivate let model = ApartmentCostPredictionModel()
+// FIXME: Deprecated init
+fileprivate let model = CostPredictionModel()
 
 struct Apartment {
     var area: Float { didSet { makePrediction() } }
@@ -22,9 +22,9 @@ struct Apartment {
     
     private mutating func makePrediction() {
         let prediction = try? model.prediction(
+            Rooms: Double(rooms),
             Area: Double(area),
             Floor: Double(floor),
-            Rooms: Double(rooms),
             Latitude: coordinates.latitude,
             Longitude: coordinates.longitude)
         
