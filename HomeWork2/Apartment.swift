@@ -10,8 +10,7 @@ import RxSwift
 import CoreML
 import MapKit
 
-// FIXME: Deprecated init
-fileprivate let model = CostPredictionModel()
+fileprivate let model = try? CostPredictionModel(contentsOf: CostPredictionModel.urlOfModelInThisBundle)
 
 struct Apartment {
     var area: Float { didSet { makePrediction() } }
@@ -21,7 +20,7 @@ struct Apartment {
     var cost: BehaviorSubject<Double> = .init(value: 0.0)
     
     private mutating func makePrediction() {
-        let prediction = try? model.prediction(
+        let prediction = try? model?.prediction(
             Rooms: Double(rooms),
             Area: Double(area),
             Floor: Double(floor),

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.cameraSession)
     private let videoDataOutput = AVCaptureVideoDataOutput()
     private var faceLayers = [CAShapeLayer]()
+    private var rocketFired = false
     
     // MARK: Standard Funcs
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class ViewController: UIViewController {
         self.previewLayer.frame = self.view.frame
     }
     
-    // MARK: Created funcs
+    // MARK: Camera setup
     /// Detecting available camera
     private func setupCamera(){
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .front)
@@ -59,6 +60,7 @@ class ViewController: UIViewController {
         videoConnection?.videoOrientation = .portrait
     }
     
+    // MARK: Vision
     /// Handling Vision observations to detect faces in view
     private func handleFaceDetectionObservations(_ observations: [VNFaceObservation]) {
         for observation in observations {
@@ -73,7 +75,53 @@ class ViewController: UIViewController {
             self.faceLayers.append(faceLayer)
             self.view.layer.addSublayer(faceLayer)
             
+            if !rocketFired {
+                fireRocket(at: faceLayer.path!)
+            }
         }
+    }
+    
+    private func fireRocket(at face: CGPath){
+        rocketFired.toggle()
+        
+        let rocket = UIImageView(image: UIImage(named: "Rocket"))
+        let explosion = UIImageView(image: UIImage(named: "Explosion"))
+        
+        rocket.frame = CGRect(origin: .zero, size: rocket.image!.size / 5)
+        rocket.center = CGPoint(x: view.bounds.maxX / 2, y: view.bounds.height - (rocket.image?.size.height)! / 5)
+        
+        
+        explosion.frame = CGRect(origin: .zero, size: explosion.image!.size / 8)
+        explosion.center = face.center
+        explosion.alpha = 0
+        explosion.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
+        view.addSubview(rocket)
+        view.addSubview(explosion)
+        
+        let distance = view.frame.size.width / min(face.boundingBox.size.width, face.boundingBox.size.height)
+        let duration = Double(distance) * 0.45
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn) {
+            rocket.center = explosion.center
+        } completion: { ended in
+            rocket.alpha = 0
+            UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
+                explosion.alpha = 1
+                explosion.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.7) {
+                    explosion.alpha = 0
+                    explosion.transform = CGAffineTransform(scaleX: 2, y: 2)
+                } completion: { (_) in
+                    DispatchQueue.global().async {
+                        self.rocketFired.toggle()
+                    }
+                }
+
+            })
+        }
+        
     }
     
 }
@@ -105,4 +153,19 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         
     }
     
+}
+
+extension CGSize {
+    static func / (size: CGSize, division: CGFloat) -> CGSize {
+        return CGSize(width: size.width / division, height: size.height / division)
+    }
+}
+
+extension CGPath {
+    var center: CGPoint {
+        CGPoint(
+            x: self.boundingBox.origin.x + self.boundingBox.width / 2,
+            y: self.boundingBox.origin.y + self.boundingBox.height / 2
+        )
+    }
 }
