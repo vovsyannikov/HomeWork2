@@ -1,3 +1,6 @@
 Pods/
 .lock
 .xcuserstate
+*.xcuserstate
+MLModel/.DS_Store
+MLModel/ApartmentData.numbers
