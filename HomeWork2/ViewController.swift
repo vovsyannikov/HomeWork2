@@ -10,15 +10,16 @@ import AVFoundation
 
 
 class ViewController: UIViewController {
-    var timeObserverToken: Any?
+    private var timeObserverToken: Any?
     
     private var playerItem: AVPlayerItem!
     private var player: AVPlayer!
     private var playerLayer: AVPlayerLayer!
     
-    private var testComposition = AssetStore(assets: AssetDefinition.testAssets).compose()
+    private var testComposition = AssetStore(assets: AssetDefinition.controlAssets).compose()
     
-    let playButton: PlayButton = {
+    private let playButton: PlayButton = {
+        
         let btn = PlayButton()
         btn.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         btn.layer.cornerRadius = btn.frame.height / 2
@@ -37,40 +38,44 @@ class ViewController: UIViewController {
         playButtonSetup()
     };
     
-    func playButtonSetup() {
-        self.view.addSubview(playButton)
+    private func playButtonSetup() {
+        view.addSubview(playButton)
         
-        playButton.center = self.view.center
+        playButton.center = view.center
         playButton.customObject = testComposition
-        
-        print(playButton)
         
         playButton.addTarget(self, action: #selector(startPlaying(_:)), for: .touchUpInside)
     };
     
-    @objc func startPlaying(_ sender: Any) {
+    
+    
+    @objc private func startPlaying(_ sender: Any) {
         guard let asset = (sender as! PlayButton).customObject as? AVAsset else { return }
         
         playerItem = AVPlayerItem(asset: asset)
         player = AVPlayer(playerItem: playerItem)
         playerLayer = AVPlayerLayer(player: player)
         
-        playerLayer.frame = self.view.bounds
-        self.view.layer.addSublayer(playerLayer)
+        playerLayer.videoGravity = .resizeAspect
+        playerLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat.pi / 2))
+        playerLayer.frame = view.bounds
+        view.layer.addSublayer(playerLayer)
         
         player.play()
         
-        playButton.setImage(.pause, for: .normal)
+        playButton.setImage(.replay, for: .normal)
         UIView.animate(withDuration: 0.3) { [weak self] in
             if let self = self {
                 self.playButtonToggle()
             }
         }
         
-        self.view.bringSubviewToFront(playButton)
+        view.bringSubviewToFront(playButton)
         
-        player.actionAtItemEnd = .pause
-        
+        addBoundaryTimeObserver(for: asset)
+    };
+    
+    private func addBoundaryTimeObserver(for asset: AVAsset) {
         timeObserverToken = player.addBoundaryTimeObserver(forTimes: [NSValue(time: asset.duration)], queue: .main) {
             UIView.animate(withDuration: 0.3) {
                 [weak self] in

@@ -20,7 +20,7 @@ struct AssetDefinition: Hashable {
     let type: String?
     let assetType: AssetType
     
-    static let testAssets: [AssetDefinition] = [
+    static let controlAssets: [AssetDefinition] = [
         AssetDefinition(name: "Video1", type: "MOV", assetType: .video),
         AssetDefinition(name: "Video2", type: "MOV", assetType: .video),
         AssetDefinition(name: "Video3", type: "MOV", assetType: .video),
@@ -86,7 +86,13 @@ class AssetStore {
         print("Overall duration of video: \(currentVideoDuration.seconds)")
         print("Overall duration of audio: \(currentAudioDuration.seconds)")
         
+        addTransitions()
+        
         return finalComposition
+    };
+    
+    func addTransitions() {
+        //TODO: Implement this bitch
     };
     
 }
@@ -103,5 +109,5 @@ extension CMTime {
 
 extension UIImage {
     static let play = UIImage(systemName: "arrowtriangle.right.fill")
-    static let pause = UIImage(systemName: "pause.fill")
+    static let replay = UIImage(systemName: "gobackward")
 }
