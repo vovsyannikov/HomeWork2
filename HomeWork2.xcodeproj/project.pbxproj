@@ -13,6 +13,13 @@
 		3C11B664252E435D004F8B15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B662252E435D004F8B15 /* Main.storyboard */; };
 		3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B665252E4361004F8B15 /* Assets.xcassets */; };
 		3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */; };
+		3C7071DA258FB02D00D98CD0 /* Video1.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071D9258FB02D00D98CD0 /* Video1.MOV */; };
+		3C7071DE258FD38900D98CD0 /* Song1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071DD258FD38900D98CD0 /* Song1.m4a */; };
+		3C7071E1258FDB7900D98CD0 /* Song2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071E0258FDB7900D98CD0 /* Song2.m4a */; };
+		3C7071E6258FDC1900D98CD0 /* Video4.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071E3258FDC0A00D98CD0 /* Video4.MOV */; };
+		3C7071E7258FDC1900D98CD0 /* Video2.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071E4258FDC1000D98CD0 /* Video2.MOV */; };
+		3C7071E8258FDC1900D98CD0 /* Video3.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 3C7071E5258FDC1800D98CD0 /* Video3.MOV */; };
+		3C7071EB258FDC9A00D98CD0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7071EA258FDC9A00D98CD0 /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		3C11B665252E4361004F8B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C11B668252E4361004F8B15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C11B66A252E4361004F8B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C7071D9258FB02D00D98CD0 /* Video1.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Video1.MOV; sourceTree = "<group>"; };
+		3C7071DD258FD38900D98CD0 /* Song1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Song1.m4a; sourceTree = "<group>"; };
+		3C7071E0258FDB7900D98CD0 /* Song2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Song2.m4a; sourceTree = "<group>"; };
+		3C7071E3258FDC0A00D98CD0 /* Video4.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Video4.MOV; sourceTree = "<group>"; };
+		3C7071E4258FDC1000D98CD0 /* Video2.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Video2.MOV; sourceTree = "<group>"; };
+		3C7071E5258FDC1800D98CD0 /* Video3.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Video3.MOV; sourceTree = "<group>"; };
+		3C7071EA258FDC9A00D98CD0 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +73,15 @@
 				3C11B65C252E435C004F8B15 /* AppDelegate.swift */,
 				3C11B65E252E435C004F8B15 /* SceneDelegate.swift */,
 				3C11B660252E435C004F8B15 /* ViewController.swift */,
+				3C7071EA258FDC9A00D98CD0 /* Assets.swift */,
 				3C11B662252E435D004F8B15 /* Main.storyboard */,
 				3C11B665252E4361004F8B15 /* Assets.xcassets */,
+				3C7071D9258FB02D00D98CD0 /* Video1.MOV */,
+				3C7071E4258FDC1000D98CD0 /* Video2.MOV */,
+				3C7071E5258FDC1800D98CD0 /* Video3.MOV */,
+				3C7071E3258FDC0A00D98CD0 /* Video4.MOV */,
+				3C7071DD258FD38900D98CD0 /* Song1.m4a */,
+				3C7071E0258FDB7900D98CD0 /* Song2.m4a */,
 				3C11B667252E4361004F8B15 /* LaunchScreen.storyboard */,
 				3C11B66A252E4361004F8B15 /* Info.plist */,
 			);
@@ -125,8 +146,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C11B669252E4361004F8B15 /* LaunchScreen.storyboard in Resources */,
+				3C7071DE258FD38900D98CD0 /* Song1.m4a in Resources */,
+				3C7071E6258FDC1900D98CD0 /* Video4.MOV in Resources */,
+				3C7071E8258FDC1900D98CD0 /* Video3.MOV in Resources */,
+				3C7071E7258FDC1900D98CD0 /* Video2.MOV in Resources */,
+				3C7071E1258FDB7900D98CD0 /* Song2.m4a in Resources */,
 				3C11B666252E4361004F8B15 /* Assets.xcassets in Resources */,
 				3C11B664252E435D004F8B15 /* Main.storyboard in Resources */,
+				3C7071DA258FB02D00D98CD0 /* Video1.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +166,7 @@
 			files = (
 				3C11B661252E435C004F8B15 /* ViewController.swift in Sources */,
 				3C11B65D252E435C004F8B15 /* AppDelegate.swift in Sources */,
+				3C7071EB258FDC9A00D98CD0 /* Assets.swift in Sources */,
 				3C11B65F252E435C004F8B15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q66LD4VF2K;
 				INFOPLIST_FILE = HomeWork2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q66LD4VF2K;
 				INFOPLIST_FILE = HomeWork2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
