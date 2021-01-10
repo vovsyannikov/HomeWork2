@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 
-
 class ViewController: UIViewController {
     private var timeObserverToken: Any?
     
@@ -31,7 +30,6 @@ class ViewController: UIViewController {
         return btn
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,19 +38,23 @@ class ViewController: UIViewController {
     
     private func playButtonSetup() {
         view.addSubview(playButton)
+
         
         playButton.center = view.center
-        playButton.customObject = testComposition
+        (playButton.asset, playButton.composition) = testComposition
         
         playButton.addTarget(self, action: #selector(startPlaying(_:)), for: .touchUpInside)
     };
     
     
-    
     @objc private func startPlaying(_ sender: Any) {
-        guard let asset = (sender as! PlayButton).customObject as? AVAsset else { return }
+        guard let playButton = sender as? PlayButton,
+              let asset = playButton.asset,
+              let composition = playButton.composition
+        else { return }
         
         playerItem = AVPlayerItem(asset: asset)
+        playerItem.videoComposition = composition
         player = AVPlayer(playerItem: playerItem)
         playerLayer = AVPlayerLayer(player: player)
         
